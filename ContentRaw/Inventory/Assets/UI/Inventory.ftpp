@@ -1,0 +1,301 @@
+{
+  "meta": {
+    "version": "0.6.7"
+  },
+  "savePath": "D:\\EpicGames\\Projects\\TestEldenRing\\Content\\Inventory\\Assets\\UI",
+  "images": [
+    {
+      "name": "AttackPowerIcon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/AttackPowerIcon.png",
+      "folder": ""
+    },
+    {
+      "name": "AttributeScalingIcon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/AttributeScalingIcon.png",
+      "folder": ""
+    },
+    {
+      "name": "AttributesRequiredIcon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/AttributesRequiredIcon.png",
+      "folder": ""
+    },
+    {
+      "name": "CataloguePanel.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/CataloguePanel.png",
+      "folder": ""
+    },
+    {
+      "name": "CharacterStatusIcon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/CharacterStatusIcon.png",
+      "folder": ""
+    },
+    {
+      "name": "DamageNegationIcon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/DamageNegationIcon.png",
+      "folder": ""
+    },
+    {
+      "name": "DeviderHorizontal.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/DeviderHorizontal.png",
+      "folder": ""
+    },
+    {
+      "name": "DeviderVertical.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/DeviderVertical.png",
+      "folder": ""
+    },
+    {
+      "name": "EquipmentIcon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/EquipmentIcon.png",
+      "folder": ""
+    },
+    {
+      "name": "GridBG.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/GridBG.png",
+      "folder": ""
+    },
+    {
+      "name": "GuardedGamageNegationIcon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/GuardedGamageNegationIcon.png",
+      "folder": ""
+    },
+    {
+      "name": "ItemEquipmentSlotBG.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/ItemEquipmentSlotBG.png",
+      "folder": ""
+    },
+    {
+      "name": "ItemEquipmentSlotFG.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/ItemEquipmentSlotFG.png",
+      "folder": ""
+    },
+    {
+      "name": "ItemEquipmentSlotSelected.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/ItemEquipmentSlotSelected.png",
+      "folder": ""
+    },
+    {
+      "name": "ItemFrameMiniBG.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/ItemFrameMiniBG.png",
+      "folder": ""
+    },
+    {
+      "name": "ItemSlotBG.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/ItemSlotBG.png",
+      "folder": ""
+    },
+    {
+      "name": "ItemSlotSelected.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/ItemSlotSelected.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonL1.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonL1.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonL2.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonL2.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonL3.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonL3.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonO.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonO.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonR1.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonR1.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonR2.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonR2.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonR3.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonR3.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonSelect.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonSelect.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonSquare.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonSquare.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonTriangle.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonTriangle.png",
+      "folder": ""
+    },
+    {
+      "name": "PSButtonX.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PSButtons/PSButtonX.png",
+      "folder": ""
+    },
+    {
+      "name": "PassiveEffectsIcon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/PassiveEffectsIcon.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderArmor.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderArmor.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderArrows.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderArrows.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderBolts.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderBolts.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderBoots.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderBoots.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderConsumables.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderConsumables.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderGloves.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderGloves.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderHelm.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderHelm.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderLeftHandWeapon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderLeftHandWeapon.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderRightHandWeapon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderRightHandWeapon.png",
+      "folder": ""
+    },
+    {
+      "name": "PlaceholderScrolls.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Placeholders/PlaceholderScrolls.png",
+      "folder": ""
+    },
+    {
+      "name": "ResistanceIcon.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/ResistanceIcon.png",
+      "folder": ""
+    },
+    {
+      "name": "Selector.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Selector.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategoryArmor.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategoryArmor.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategoryAxe.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategoryAxe.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategoryBoots.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategoryBoots.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategoryBow.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategoryBow.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategoryCrossbow.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategoryCrossbow.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategoryGloves.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategoryGloves.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategoryHelm.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategoryHelm.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategoryShield.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategoryShield.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategorySpear.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategorySpear.png",
+      "folder": ""
+    },
+    {
+      "name": "SubcategorySword.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/Subcategories/SubcategorySword.png",
+      "folder": ""
+    },
+    {
+      "name": "TitleBG.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/TitleBG.png",
+      "folder": ""
+    },
+    {
+      "name": "TitleIconBG.png",
+      "path": "D:/EpicGames/Projects/TestEldenRing/ContentRaw/Inventory/Assets/UI/Sources/TitleIconBG.png",
+      "folder": ""
+    }
+  ],
+  "folders": [],
+  "packOptions": {
+    "textureName": "Inventory",
+    "textureFormat": "png",
+    "removeFileExtension": true,
+    "prependFolderName": false,
+    "base64Export": false,
+    "tinify": false,
+    "tinifyKey": "",
+    "scale": 1,
+    "filter": "none",
+    "exporter": "UnrealEngine",
+    "fileName": "pack-result",
+    "savePath": "D:\\EpicGames\\Projects\\TestEldenRing\\Content\\Inventory\\Assets\\UI",
+    "width": 2048,
+    "height": 4096,
+    "fixedSize": false,
+    "powerOfTwo": true,
+    "padding": 2,
+    "extrude": 2,
+    "allowRotation": false,
+    "allowTrim": false,
+    "trimMode": "trim",
+    "alphaThreshold": "0",
+    "detectIdentical": true,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit"
+  }
+}
