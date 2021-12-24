@@ -5,6 +5,7 @@
 
 #include "EquipmentPanelWidget.h"
 #include "InventoryPanelWidget.h"
+#include "ItemPropertiesWidget.h"
 #include "Components/CanvasPanel.h"
 #include "GameFramework/InputSettings.h"
 
@@ -24,6 +25,17 @@ bool UInventoryWidget::Initialize()
 	{
 		return false;
 	}
+
+	EquipmentPanel->OnEquipSelectionStart.BindWeakLambda(this, [this]()
+	{
+		EquipSelectionStart();
+	});
+
+	EquipmentPanel->OnChangedCurrentSlot.BindWeakLambda(this, [this](
+		EEquipmentSlot EquipmentSlotType, const UInventoryItemSlot* InventoryItemSlot)
+	{
+		ItemProperties->Update(EquipmentSlotType, InventoryItemSlot);
+	});
 	
 	return true;
 }

@@ -21,7 +21,7 @@ class TESTELDENRING_API UEquipmentPanelWidget : public UUserWidget
 	
 public:
 	virtual bool Initialize() override;
-
+	
 	virtual void NativeConstruct() override;
 	
 	UFUNCTION()
@@ -38,6 +38,12 @@ public:
 
 	UFUNCTION()
 	EEquipmentSlot GetSelectedSlotType();
+
+	DECLARE_DELEGATE(FOnEquipSelectionStart);
+	FOnEquipSelectionStart OnEquipSelectionStart;
+	
+	DECLARE_DELEGATE_TwoParams(FOnChangedCurrentSlot, EEquipmentSlot EquipmentSlotType, const UInventoryItemSlot* InventoryItemSlot);
+	FOnChangedCurrentSlot OnChangedCurrentSlot;
 
 protected:
 	
@@ -133,7 +139,10 @@ private:
 	UItemEquipmentSlotWidget* GetItemEquipmentSlotWidget(EEquipmentSlot EquipmentSlotType) const;	
 
 	UFUNCTION()
-	void SetSelectedEquipSlot(UItemEquipmentSlotWidget* NewSelectedEquipSlot);
+	void SetSelectedEquipSlot(UItemEquipmentSlotWidget* NewSelectedEquipSlot);	
+	
+	UFUNCTION()
+	void SetItemEquipped(UItemEquipmentSlotWidget* ItemEquipmentSlotWidget) const;
 	
 	UPROPERTY(Transient)
 	UInventoryAC* InventoryAC;

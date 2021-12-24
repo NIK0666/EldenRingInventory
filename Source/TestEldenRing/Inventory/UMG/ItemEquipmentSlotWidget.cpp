@@ -41,9 +41,10 @@ FReply UItemEquipmentSlotWidget::NativeOnMouseButtonDown(const FGeometry& InGeom
 {
 	if (InMouseEvent.GetPressedButtons().Find(EKeys::LeftMouseButton))
 	{
-		//TODO Вызов делегата!
-		// Слушать делегат в InventoryWidget
-		// Там вызвать EquipSelectionStart
+		if (ItemEquipped.IsBound())
+		{
+			ItemEquipped.Execute(this);
+		}
 	}
 	return Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
 }
@@ -61,6 +62,11 @@ void UItemEquipmentSlotWidget::Update(UInventoryItemSlot* InventoryItemSlot)
     {
     	ItemImage->SetVisibility(ESlateVisibility::Collapsed);
     }
+}
+
+UInventoryItemSlot* UItemEquipmentSlotWidget::GetInventoryItemSlot()
+{
+	return ItemSlot;
 }
 
 void UItemEquipmentSlotWidget::ChangeSelectionState(bool bIsSelected)

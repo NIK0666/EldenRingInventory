@@ -30,6 +30,9 @@ public:
 	void Update(UInventoryItemSlot* InventoryItemSlot);
 
 	UFUNCTION()
+	UInventoryItemSlot* GetInventoryItemSlot();
+
+	UFUNCTION()
 	void ChangeSelectionState(bool bIsSelected);
 
 	UFUNCTION()
@@ -45,7 +48,10 @@ public:
 	EEquipmentSlot EquipmentSlotType;
 
 	DECLARE_DELEGATE_OneParam(FSlotSelected, UItemEquipmentSlotWidget* ItemEquipmentSlotWidget);
-	FSlotSelected SlotSelected;	
+	FSlotSelected SlotSelected;
+
+	DECLARE_DELEGATE_OneParam(FItemEquipped, UItemEquipmentSlotWidget* ItemEquipmentSlotWidget);
+	FItemEquipped ItemEquipped;
 
 protected:
 	UPROPERTY(meta=(BindWidget))

@@ -9,6 +9,7 @@
 
 #include "InventoryWidget.generated.h"
 
+class UItemPropertiesWidget;
 class UCanvasPanel;
 class UInventoryPanelWidget;
 class UEquipmentPanelWidget;
@@ -45,6 +46,9 @@ protected:
 
 	UPROPERTY(meta=(BindWidget))
 	UCanvasPanel* DetailedViewPanel;
+
+	UPROPERTY(meta=(BindWidget))
+	UItemPropertiesWidget* ItemProperties;
 
 	UPROPERTY(meta=(BindWidgetAnim), Transient)
 	UWidgetAnimation* EquipmentToInventoryPanelAnim;

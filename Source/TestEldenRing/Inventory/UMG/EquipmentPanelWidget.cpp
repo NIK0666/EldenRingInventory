@@ -7,6 +7,7 @@
 #include "Components/HorizontalBox.h"
 #include "Components/PanelWidget.h"
 #include "Components/TextBlock.h"
+#include "Components/VerticalBox.h"
 #include "TestEldenRing/Core/ERPlayerController.h"
 
 bool UEquipmentPanelWidget::Initialize()
@@ -40,33 +41,17 @@ void UEquipmentPanelWidget::NativeConstruct()
 				}
 			});
 	}
-	
-	EquipSlotLHand1->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotLHand2->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotLHand3->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotRHand1->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotRHand2->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotRHand3->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotArrows1->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotArrows2->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotBolts1->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotBolts2->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotHelm->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotArmor->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotGloves->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotBoots->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotAmulet1->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotAmulet2->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables1->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables2->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables3->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables4->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables5->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables6->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables7->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables8->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables9->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-	EquipSlotConsumables10->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
+
+	for (int32 L_Row = 0; L_Row < EquipmentSlotsVBox->GetChildrenCount(); L_Row++)
+	{
+		UHorizontalBox* L_ChildHBox = Cast<UHorizontalBox>(EquipmentSlotsVBox->GetChildAt(L_Row));
+		for (auto L_SlotWidget : L_ChildHBox->GetAllChildren())
+		{
+			UItemEquipmentSlotWidget* L_SlotItemWidget = Cast<UItemEquipmentSlotWidget>(L_SlotWidget);
+			L_SlotItemWidget->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
+			L_SlotItemWidget->ItemEquipped.BindUObject(this, &UEquipmentPanelWidget::SetItemEquipped);
+		}
+	}
 
 	SetSelectedEquipSlot(EquipSlotRHand1);
 }
@@ -212,4 +197,19 @@ void UEquipmentPanelWidget::SetSelectedEquipSlot(UItemEquipmentSlotWidget* NewSe
 	
 	ItemNameText->SetText(NewSelectedEquipSlot->GetItemName());
 	SlotTypeText->SetText(NewSelectedEquipSlot->GetSlotName());
+	
+	if (OnChangedCurrentSlot.IsBound())
+	{
+		
+		OnChangedCurrentSlot.Execute(NewSelectedEquipSlot->EquipmentSlotType, NewSelectedEquipSlot->GetInventoryItemSlot());
+	}
+	
+}
+
+void UEquipmentPanelWidget::SetItemEquipped(UItemEquipmentSlotWidget* ItemEquipmentSlotWidget) const
+{
+	if (OnEquipSelectionStart.IsBound())
+	{
+		OnEquipSelectionStart.Execute();
+	}
 }

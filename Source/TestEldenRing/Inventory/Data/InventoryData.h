@@ -10,37 +10,37 @@
 
 class USlateBrushAsset;
 UENUM()
-enum class EWeaponSubtype
+enum class EWeaponSubtype : uint8
 {
-	Sword = 0,
-	Axe,
-	Spear,
-	Bow,
-	Crossbow,
-	Shield
+	Sword = 0		UMETA(DisplayName = "Sword"),
+	Axe				UMETA(DisplayName = "Axe"),
+	Spear			UMETA(DisplayName = "Spear"),
+	Bow				UMETA(DisplayName = "Bow"),
+	Crossbow		UMETA(DisplayName = "Crossbow"),
+	Shield			UMETA(DisplayName = "Shield")
 };
 
 UENUM()
-enum class EDamageType
+enum class EDamageType: uint8
 {
-	Standard = 0,
-	Pierce,
-	Strike,
-	Slash,	
-	Standard_Pierce,
-	Slash_Pierce,	
+	Standard = 0		UMETA(DisplayName = "Standard"),
+	Pierce				UMETA(DisplayName = "Pierce"),
+	Strike				UMETA(DisplayName = "Strike"),
+	Slash				UMETA(DisplayName = "Slash"),
+	Standard_Pierce		UMETA(DisplayName = "Standard / Pierce"),
+	Slash_Pierce		UMETA(DisplayName = "Slash / Pierce")
 };
 
 UENUM()
 enum class EScalingValue
 {
-	NoScaling = 0,
-	E,
-	D,
-	C,	
-	B,
-	A,	
-	S
+	NoScaling = 0	UMETA(DisplayName = "-"),
+	E				UMETA(DisplayName = "E"),
+	D				UMETA(DisplayName = "D"),
+	C				UMETA(DisplayName = "C"),
+	B				UMETA(DisplayName = "B"),
+	A				UMETA(DisplayName = "A"),
+	S				UMETA(DisplayName = "S")
 };
 
 USTRUCT(BlueprintType)
