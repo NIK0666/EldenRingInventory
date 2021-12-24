@@ -159,6 +159,7 @@ bool UInventoryAC::SetEquipItem(UInventoryItemSlot* InventoryItemSlot)
 		UInventoryItemSlot* PrevItemSlot = SlotPtr->InventoryItemSlot;
 		SlotPtr->InventoryItemSlot = InventoryItemSlot;
 		SlotPtr->InventoryItemSlot->Count = InventoryItemSlot->Count;
+		SlotPtr->InventoryItemSlot->EquipmentSlotType = SlotType;
 
 		if (EquipItemChanged.IsBound())
 		{
@@ -167,6 +168,32 @@ bool UInventoryAC::SetEquipItem(UInventoryItemSlot* InventoryItemSlot)
 		return true;
 	}
 	return false;
+}
+
+FEquipmentSlot* UInventoryAC::GetInventoryItemSlotByEquipmentType(EEquipmentSlot EquipmentSlot)
+{
+	if (Equipment.Find(EquipmentSlot) == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("UInventoryAC::GetInventoryItemSlotByEquipmentType - Slot type \"%s\" is not found!"), *UEnum::GetValueAsString(EquipmentSlot));
+		return nullptr;
+	}
+
+	return &Equipment[EquipmentSlot];
+	
+}
+
+TArray<UInventoryItemSlot*> UInventoryAC::GetInventoryItems(const UDataTable* OwnDataTable)
+{
+	TArray<UInventoryItemSlot*> Out;
+	for (UInventoryItemSlot* L_Item : Inventory)
+	{		
+		if (L_Item->ItemRow.DataTable == OwnDataTable)
+		{
+			Out.Add(L_Item);
+		}
+	}
+	
+	return Out;
 }
 
 void UInventoryAC::SetEquipItemToSlot(UInventoryItemSlot* InventoryItemSlot, EEquipmentSlot EquipmentSlot)
@@ -181,9 +208,20 @@ void UInventoryAC::SetEquipItemToSlot(UInventoryItemSlot* InventoryItemSlot, EEq
 	{
 		return;
 	}
+	if (InventoryItemSlot->EquipmentSlotType != EEquipmentSlot::None)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UInventoryAC::SetEquipItemToSlot - EquipmentSlotType is not NONE!"));
+		ClearEquipSlot(InventoryItemSlot->EquipmentSlotType);
+	}
 
+	InventoryItemSlot->EquipmentSlotType = EquipmentSlot;
 	UInventoryItemSlot* PrevItemSlot = Equipment[EquipmentSlot].InventoryItemSlot;
 	Equipment[EquipmentSlot].InventoryItemSlot = InventoryItemSlot;
+
+	if (IsValid(PrevItemSlot))
+	{
+		PrevItemSlot->EquipmentSlotType = EEquipmentSlot::None;
+	}
 	
 	if (EquipItemChanged.IsBound())
 	{
@@ -202,6 +240,7 @@ void UInventoryAC::ClearEquipSlot(EEquipmentSlot EquipmentSlot)
 	if (Equipment[EquipmentSlot].InventoryItemSlot != nullptr)
 	{
 		UInventoryItemSlot* PrevItemSlot = Equipment[EquipmentSlot].InventoryItemSlot;
+		PrevItemSlot->EquipmentSlotType = EEquipmentSlot::None;
 		Equipment[EquipmentSlot].InventoryItemSlot = nullptr;
 		
 		if (EquipItemChanged.IsBound())

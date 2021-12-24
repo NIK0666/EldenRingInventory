@@ -310,7 +310,8 @@ class UInventoryItemSlot;
 UENUM(BlueprintType, Blueprintable)
 enum class EEquipmentSlot : uint8
 {
-	LHand1 = 0,
+	None = 0,
+	LHand1,
 	LHand2,
 	LHand3,
 	RHand1,

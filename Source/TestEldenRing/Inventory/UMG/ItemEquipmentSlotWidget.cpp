@@ -27,7 +27,7 @@ void UItemEquipmentSlotWidget::SetSelected()
 	if (SlotSelected.IsBound())
 	{
 		SlotSelected.Execute(this);
-	}	
+	}
 }
 
 void UItemEquipmentSlotWidget::NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
@@ -35,6 +35,17 @@ void UItemEquipmentSlotWidget::NativeOnMouseEnter(const FGeometry& InGeometry, c
 	Super::NativeOnMouseEnter(InGeometry, InMouseEvent);
 
 	SetSelected();
+}
+
+FReply UItemEquipmentSlotWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+{
+	if (InMouseEvent.GetPressedButtons().Find(EKeys::LeftMouseButton))
+	{
+		//TODO Вызов делегата!
+		// Слушать делегат в InventoryWidget
+		// Там вызвать EquipSelectionStart
+	}
+	return Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
 }
 
 void UItemEquipmentSlotWidget::Update(UInventoryItemSlot* InventoryItemSlot)

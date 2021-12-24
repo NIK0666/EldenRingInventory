@@ -23,7 +23,9 @@ public:
 	void SetSelected();
 	
 	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
-		
+
+	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+	
 	UFUNCTION()
 	void Update(UInventoryItemSlot* InventoryItemSlot);
 

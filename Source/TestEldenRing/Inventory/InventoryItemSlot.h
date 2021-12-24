@@ -20,6 +20,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Count = 1;
 
+	UPROPERTY()
+	EEquipmentSlot EquipmentSlotType = EEquipmentSlot::None;
+
 	FItem* GetItemInfo();
 };
 

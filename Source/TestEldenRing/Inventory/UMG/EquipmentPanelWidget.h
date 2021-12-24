@@ -32,7 +32,13 @@ public:
 
 	UFUNCTION()
 	void EquipRemove() const;
-	
+
+	UFUNCTION()
+	FText GetSelectedSlotName();
+
+	UFUNCTION()
+	EEquipmentSlot GetSelectedSlotType();
+
 protected:
 	
 	UPROPERTY(meta=(BindWidget))
@@ -114,7 +120,7 @@ protected:
 	UItemEquipmentSlotWidget* EquipSlotConsumables10;
 
 	UPROPERTY(meta=(BindWidget))
-	UVerticalBox* EquipmentSlotsVBox;	
+	UVerticalBox* EquipmentSlotsVBox;
 
 	UPROPERTY()
 	UTextBlock* SlotTypeText;

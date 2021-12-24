@@ -129,6 +129,16 @@ void UEquipmentPanelWidget::EquipRemove() const
 	}
 }
 
+FText UEquipmentPanelWidget::GetSelectedSlotName()
+{
+	return CurrentSelectedSlotWidget->GetSlotName();
+}
+
+EEquipmentSlot UEquipmentPanelWidget::GetSelectedSlotType()
+{
+	return CurrentSelectedSlotWidget->EquipmentSlotType;
+}
+
 UItemEquipmentSlotWidget* UEquipmentPanelWidget::GetItemEquipmentSlotWidget(EEquipmentSlot EquipmentSlotType) const
 {
 	switch (EquipmentSlotType)

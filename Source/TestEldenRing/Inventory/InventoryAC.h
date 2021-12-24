@@ -18,26 +18,12 @@ class TESTELDENRING_API UInventoryAC : public UActorComponent
 	GENERATED_BODY()
 
 public:
-	UInventoryAC();
+	UInventoryAC();	
 
-	DECLARE_MULTICAST_DELEGATE_FourParams(FAddedItem, const FDataTableRowHandle& ItemRow, const FItem& Item, int32 AddedCount, int32 TotalCount);
-	FAddedItem AddedItemEvent;
-
-	DECLARE_MULTICAST_DELEGATE_ThreeParams(FAddedItemToChest, const FDataTableRowHandle& ItemRow, const FItem& Item, int32 Count);
-	FAddedItemToChest MoveItemToChest;
-
-	DECLARE_MULTICAST_DELEGATE_FourParams(FRemovedItem, const FDataTableRowHandle& ItemRow, const FItem& Item, int32 RemovedCount, int32 TotalCount);
-	FRemovedItem RemovedItemEvent;	
-
-	DECLARE_MULTICAST_DELEGATE_ThreeParams(FEquipItemChanged, EEquipmentSlot EquipmentSlot,	UInventoryItemSlot* FromInventoryItemSlot, UInventoryItemSlot* ToInventoryItemSlot);
-	
-	FEquipItemChanged EquipItemChanged;
+	FEquipmentSlot* GetInventoryItemSlotByEquipmentType(EEquipmentSlot EquipmentSlot);		
 
 	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
-	void ClearEquipSlot(EEquipmentSlot EquipmentSlot);
-
-protected:
-	virtual void BeginPlay() override;
+	TArray<UInventoryItemSlot*> GetInventoryItems(const UDataTable* OwnDataTable);
 
 	/**
 	 * @brief Добавление предмета в инвентарь
@@ -72,7 +58,7 @@ protected:
 	 */
 	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
 	bool SetEquipItem(UInventoryItemSlot* InventoryItemSlot);
-
+	
 	/**
 	 * @brief Экипирует или убирает экипировку предмета
 	 * @param InventoryItemSlot Объект слота из инвентаря. Если nullptr то снимается экипировка.
@@ -80,11 +66,26 @@ protected:
 	 */
 	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
 	void SetEquipItemToSlot(UInventoryItemSlot* InventoryItemSlot, EEquipmentSlot EquipmentSlot);
-	
-	
 
+	DECLARE_MULTICAST_DELEGATE_FourParams(FAddedItem, const FDataTableRowHandle& ItemRow, const FItem& Item,
+	                                      int32 AddedCount, int32 TotalCount);
+	FAddedItem AddedItemEvent;
 
+	DECLARE_MULTICAST_DELEGATE_ThreeParams(FAddedItemToChest, const FDataTableRowHandle& ItemRow, const FItem& Item, int32 Count);
+	FAddedItemToChest MoveItemToChest;
+
+	DECLARE_MULTICAST_DELEGATE_FourParams(FRemovedItem, const FDataTableRowHandle& ItemRow, const FItem& Item, int32 RemovedCount, int32 TotalCount);
+	FRemovedItem RemovedItemEvent;	
+
+	DECLARE_MULTICAST_DELEGATE_ThreeParams(FEquipItemChanged, EEquipmentSlot EquipmentSlot,	UInventoryItemSlot* FromInventoryItemSlot, UInventoryItemSlot* ToInventoryItemSlot);
 	
+	FEquipItemChanged EquipItemChanged;
+
+	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
+	void ClearEquipSlot(EEquipmentSlot EquipmentSlot);
+
+protected:
+	virtual void BeginPlay() override;	
 	
 	UPROPERTY(BlueprintReadWrite)
 	TArray<UInventoryItemSlot*> Inventory;
