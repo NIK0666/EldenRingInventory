@@ -188,10 +188,17 @@ void UEquipmentPanelWidget::SetSelectedEquipSlot(UBaseSlotWidget* SlotWidget)
 	
 	ItemNameText->SetText(CurrentSelectedSlotWidget->GetItemName());
 	SlotTypeText->SetText(CurrentSelectedSlotWidget->GetSlotName());
-	
-	if (OnSelectedEquipSlot.IsBound())
+
+	if (OnChangedLookItemInfo.IsBound())
 	{
-		OnSelectedEquipSlot.Execute(CurrentSelectedSlotWidget);
+		if (SlotWidget->GetInventoryItemSlot())
+		{
+			OnChangedLookItemInfo.Execute(SlotWidget->GetInventoryItemSlot()->GetItemInfo());
+		}
+		else
+		{
+			OnChangedLookItemInfo.Execute(InventoryAC->GetEmptyEquipmentInfo(CurrentSelectedSlotWidget->EquipmentSlotType));
+		}
 	}
 	
 }

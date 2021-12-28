@@ -42,8 +42,8 @@ public:
 	DECLARE_DELEGATE(FOnEquipSelectionStart);
 	FOnEquipSelectionStart OnEquipSelectionStart;
 	
-	DECLARE_DELEGATE_OneParam(FOnSelectedEquipSlot, UItemEquipmentSlotWidget* ItemEquipmentSlotWidget);
-	FOnSelectedEquipSlot OnSelectedEquipSlot;
+	DECLARE_DELEGATE_OneParam(FOnChangedLookItemInfo, FItem* ItemInfo);
+	FOnChangedLookItemInfo OnChangedLookItemInfo;
 
 protected:
 	

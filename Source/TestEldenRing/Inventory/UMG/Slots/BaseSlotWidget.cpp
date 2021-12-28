@@ -66,7 +66,7 @@ void UBaseSlotWidget::ChangeSelectionState(bool bIsSelected) const
 	SelectedImage->SetVisibility(bIsSelected ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 }
 
-bool UBaseSlotWidget::IsEmptySlot()
+bool UBaseSlotWidget::IsEmptySlot() const
 {
 	return ItemSlot == nullptr;
 }
@@ -76,7 +76,7 @@ UInventoryItemSlot* UBaseSlotWidget::GetInventoryItemSlot() const
 	return ItemSlot;
 }
 
-FText UBaseSlotWidget::GetItemName()
+FText UBaseSlotWidget::GetItemName() const
 {
 	if (ItemSlot == nullptr)
 	{

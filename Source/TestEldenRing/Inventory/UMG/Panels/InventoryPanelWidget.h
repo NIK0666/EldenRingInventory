@@ -45,8 +45,8 @@ public:
 	DECLARE_DELEGATE(FOnEquipSelection);
 	FOnEquipSelection OnEquipSelection;	
 	
-	DECLARE_DELEGATE_OneParam(FOnChangedCurrentItemSlot, const UInventoryItemSlot* InventoryItemSlot);
-	FOnChangedCurrentItemSlot OnChangedCurrentItemSlot;
+	DECLARE_DELEGATE_OneParam(FOnChangedLookItemInfo, FItem* ItemInfo);
+	FOnChangedLookItemInfo OnChangedLookItemInfo;
 
 protected:	
 	UPROPERTY(Transient)

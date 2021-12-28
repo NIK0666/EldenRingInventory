@@ -80,21 +80,12 @@ void UInventoryPanelWidget::SetSelectedInventorySlot(UBaseSlotWidget* NewSlotWid
 	NewSlotWidget->ChangeSelectionState(true);
 	CurrentSelectedInventorySlotWidget = NewSlotWidget;
 
-	UInventoryItemSlot* ItemSlot = NewSlotWidget->GetInventoryItemSlot();
-	if (ItemSlot)
-	{
-		ItemNameText->SetText(ItemSlot->GetItemInfo()->ItemName);
-	}
-	else
-	{
-		ItemNameText->SetText(FText::FromString("-"));
-	}
+	ItemNameText->SetText(NewSlotWidget->GetItemName());
 	
-	//TODO Fix Here
-	// if (OnChangedCurrentItemSlot.IsBound())
-	// {
-	// 	OnChangedCurrentItemSlot.Execute(NewSelectedInventorySlot->GetInventoryItemSlot());
-	// }
+	if (OnChangedLookItemInfo.IsBound())
+	{
+		OnChangedLookItemInfo.Execute(NewSlotWidget->GetInventoryItemSlot()->GetItemInfo());
+	}
 }
 
 void UInventoryPanelWidget::EquipSelectedItem() const

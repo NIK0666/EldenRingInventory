@@ -229,14 +229,14 @@ void UInventoryAC::SetEquipItemToSlot(UInventoryItemSlot* InventoryItemSlot, EEq
 	}
 }
 
-FItem* UInventoryAC::GetDefaultEquipment(EEquipmentSlot EquipmentSlot)
+FItem* UInventoryAC::GetEmptyEquipmentInfo(EEquipmentSlot EquipmentSlot)
 {
 	if (Equipment.Find(EquipmentSlot) == nullptr)
 	{
 		UE_LOG(LogTemp, Error, TEXT("UInventoryAC::GetDefaultEquipment - Equipment slot \"%s\" is not found!"), *UEnum::GetValueAsString(EquipmentSlot));
 		return nullptr;
 	}
-	return Equipment.Find(EquipmentSlot)->DataTable->FindRow<FItem>(FName("Default"), "FItem");
+	return Equipment.Find(EquipmentSlot)->DataTable->FindRow<FItem>(FName("Empty"), "FItem");
 }
 
 void UInventoryAC::ClearEquipSlot(EEquipmentSlot EquipmentSlot)

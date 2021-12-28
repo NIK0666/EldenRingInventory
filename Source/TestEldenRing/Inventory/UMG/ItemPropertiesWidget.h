@@ -21,7 +21,7 @@ class TESTELDENRING_API UItemPropertiesWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void Update(const UInventoryItemSlot* InventoryItemSlot);
+	void Update(FItem* ItemInfo);
 
 protected:
 

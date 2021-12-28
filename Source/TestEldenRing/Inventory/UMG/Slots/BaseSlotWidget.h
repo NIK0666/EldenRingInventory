@@ -30,10 +30,10 @@ public:
 	virtual void ChangeSelectionState(bool bIsSelected) const;
 
 	UFUNCTION()
-	bool IsEmptySlot();
+	bool IsEmptySlot() const;
 
 	UFUNCTION()
-	FText GetItemName();
+	FText GetItemName() const;
 
 	UFUNCTION()
 	UInventoryItemSlot* GetInventoryItemSlot() const;

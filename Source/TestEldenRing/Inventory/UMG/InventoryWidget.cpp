@@ -37,15 +37,14 @@ bool UInventoryWidget::Initialize()
 		InventorySelectionStart();
 	});
 
-	EquipmentPanel->OnSelectedEquipSlot.BindWeakLambda(this, [this](UItemEquipmentSlotWidget* ItemEquipmentSlotWidget)
+	EquipmentPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo)
 	{
-		ItemProperties->Update(ItemEquipmentSlotWidget->GetInventoryItemSlot());				
+		ItemProperties->Update(ItemInfo);				
 	});
-
-	InventoryPanel->OnChangedCurrentItemSlot.BindWeakLambda(this, [this](const UInventoryItemSlot* InventoryItemSlot)
+	
+	InventoryPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo)
 	{
-		UE_LOG(LogTemp, Log, TEXT("!!!!!"));
-		ItemProperties->Update(InventoryItemSlot);
+		ItemProperties->Update(ItemInfo);
 	});
 	
 	return true;

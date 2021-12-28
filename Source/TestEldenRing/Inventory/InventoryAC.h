@@ -67,7 +67,7 @@ public:
 	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
 	void SetEquipItemToSlot(UInventoryItemSlot* InventoryItemSlot, EEquipmentSlot EquipmentSlot);
 
-	FItem* GetDefaultEquipment(EEquipmentSlot EquipmentSlot);
+	FItem* GetEmptyEquipmentInfo(EEquipmentSlot EquipmentSlot);
 
 	DECLARE_MULTICAST_DELEGATE_FourParams(FAddedItem, const FDataTableRowHandle& ItemRow, const FItem& Item,
 	                                      int32 AddedCount, int32 TotalCount);

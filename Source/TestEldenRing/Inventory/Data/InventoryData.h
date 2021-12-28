@@ -47,7 +47,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FAttributeScaling
 {
 	GENERATED_BODY()
-public:
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EScalingValue Str;
 
@@ -68,7 +68,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FAttributeRequired
 {
 	GENERATED_BODY()
-public:
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Str;
 
@@ -89,7 +89,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FSuperAttack
 {
 	GENERATED_BODY()
-public:
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText AttackName;
 
@@ -101,7 +101,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FAttackPower
 {
 	GENERATED_BODY()
-public:	
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Physical;
 
@@ -128,7 +128,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FGuardedDamageNegation
 {
 	GENERATED_BODY()
-public:
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Physical;
 
@@ -152,7 +152,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FDamageNegation
 {
 	GENERATED_BODY()
-public:
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Physical;
 
@@ -179,7 +179,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FResistance
 {
 	GENERATED_BODY()
-public:
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Immunity;
 
@@ -201,7 +201,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FItem: public FTableRowBase
 {
 	GENERATED_BODY()
-public:	
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText ItemName;
 	
@@ -231,7 +231,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FWeaponItem : public FItem
 {
 	GENERATED_BODY()
-public:	
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EWeaponSubtype WeaponSubtype;
 		
@@ -264,9 +264,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FArmorItem : public FItem
 {
 	GENERATED_BODY()
-	
-public:
-	
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FDamageNegation DamageNegation;
 		
@@ -281,7 +279,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FConsumableItem : public FItem
 {
 	GENERATED_BODY()
-public:	
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 MaxCount = 1;
 
@@ -298,8 +296,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FArrowsItem : public FConsumableItem
 {
 	GENERATED_BODY()
-	
-public:
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FAttackPower AttackPower;
 };
@@ -346,8 +343,7 @@ USTRUCT(BlueprintType)
 struct TESTELDENRING_API FEquipmentSlot
 {
 	GENERATED_BODY()
-	
-public:
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UInventoryItemSlot* InventoryItemSlot;
 
