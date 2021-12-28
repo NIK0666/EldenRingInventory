@@ -2,12 +2,13 @@
 
 
 #include "InventoryWidget.h"
-
-#include "EquipmentPanelWidget.h"
-#include "InventoryPanelWidget.h"
-#include "ItemPropertiesWidget.h"
 #include "Components/CanvasPanel.h"
 #include "GameFramework/InputSettings.h"
+
+#include "ItemPropertiesWidget.h"
+#include "Panels/InventoryPanelWidget.h"
+#include "Slots/ItemEquipmentSlotWidget.h"
+#include "Slots/ItemInventorySlotWidget.h"
 
 bool UInventoryWidget::Initialize()
 {
@@ -31,10 +32,20 @@ bool UInventoryWidget::Initialize()
 		EquipSelectionStart();
 	});
 
-	EquipmentPanel->OnChangedCurrentSlot.BindWeakLambda(this, [this](
-		EEquipmentSlot EquipmentSlotType, const UInventoryItemSlot* InventoryItemSlot)
+	InventoryPanel->OnEquipSelection.BindWeakLambda(this, [this]()
 	{
-		ItemProperties->Update(EquipmentSlotType, InventoryItemSlot);
+		InventorySelectionStart();
+	});
+
+	EquipmentPanel->OnSelectedEquipSlot.BindWeakLambda(this, [this](UItemEquipmentSlotWidget* ItemEquipmentSlotWidget)
+	{
+		ItemProperties->Update(ItemEquipmentSlotWidget->GetInventoryItemSlot());				
+	});
+
+	InventoryPanel->OnChangedCurrentItemSlot.BindWeakLambda(this, [this](const UInventoryItemSlot* InventoryItemSlot)
+	{
+		UE_LOG(LogTemp, Log, TEXT("!!!!!"));
+		ItemProperties->Update(InventoryItemSlot);
 	});
 	
 	return true;
@@ -160,7 +171,7 @@ void UInventoryWidget::EquipSelectionCancel()
 
 void UInventoryWidget::InventorySelectionStart()
 {
-	if (InventoryPanel->GetSelectedSlotWidget()->IsEmptySlot())
+	if (!IsValid(InventoryPanel->GetSelectedSlotWidget()) || InventoryPanel->GetSelectedSlotWidget()->IsEmptySlot())
 	{
 		return;
 	}

@@ -17,6 +17,8 @@ class TESTELDENRING_API UItemInventorySlotWidget : public UUserWidget
 	GENERATED_BODY()
 public:
 	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+	
+	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 
 	UFUNCTION()
 	void Update(UInventoryItemSlot* InventoryItemSlot);
@@ -33,9 +35,15 @@ public:
 	UFUNCTION()
 	FText GetItemName();
 
+	UFUNCTION()
+	UInventoryItemSlot* GetInventoryItemSlot(); 
+
 
 	DECLARE_DELEGATE_OneParam(FInventorySlotSelected, UItemInventorySlotWidget* ItemInventorySlotWidget);
 	FInventorySlotSelected InventorySlotSelected;
+
+	DECLARE_DELEGATE_OneParam(FInventoryItemStartEquipped, UItemInventorySlotWidget* ItemInventorySlotWidget);
+	FInventoryItemStartEquipped InventoryItemStartEquipped;
 	
 	UPROPERTY()
 	UInventoryItemSlot* ItemSlot;

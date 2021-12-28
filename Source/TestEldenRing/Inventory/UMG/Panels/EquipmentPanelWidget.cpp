@@ -3,22 +3,12 @@
 
 #include "EquipmentPanelWidget.h"
 
-#include "ItemEquipmentSlotWidget.h"
 #include "Components/HorizontalBox.h"
 #include "Components/PanelWidget.h"
 #include "Components/TextBlock.h"
 #include "Components/VerticalBox.h"
-#include "TestEldenRing/Core/ERPlayerController.h"
 
-bool UEquipmentPanelWidget::Initialize()
-{
-	if (!Super::Initialize())
-	{
-		return false;
-	}
-	
-	return true;
-}
+#include "TestEldenRing/Inventory/UMG/Slots/ItemEquipmentSlotWidget.h"
 
 void UEquipmentPanelWidget::NativeConstruct()
 {
@@ -198,10 +188,15 @@ void UEquipmentPanelWidget::SetSelectedEquipSlot(UItemEquipmentSlotWidget* NewSe
 	ItemNameText->SetText(NewSelectedEquipSlot->GetItemName());
 	SlotTypeText->SetText(NewSelectedEquipSlot->GetSlotName());
 	
-	if (OnChangedCurrentSlot.IsBound())
+	if (OnSelectedEquipSlot.IsBound())
 	{
-		
-		OnChangedCurrentSlot.Execute(NewSelectedEquipSlot->EquipmentSlotType, NewSelectedEquipSlot->GetInventoryItemSlot());
+		// UInventoryItemSlot* L_OutItemSlot = CurrentSelectedSlotWidget->GetInventoryItemSlot();
+		// if (L_OutItemSlot == nullptr)
+		// {
+		// 	L_OutItemSlot = InventoryAC->GetDefaultEquipment(NewSelectedEquipSlot->EquipmentSlotType);
+		// }
+		// L_OutItemSlot->GetItemInfo()
+		OnSelectedEquipSlot.Execute(CurrentSelectedSlotWidget);
 	}
 	
 }

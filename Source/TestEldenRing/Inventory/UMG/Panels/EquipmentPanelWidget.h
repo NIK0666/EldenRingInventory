@@ -20,7 +20,6 @@ class TESTELDENRING_API UEquipmentPanelWidget : public UUserWidget
 	GENERATED_BODY()
 	
 public:
-	virtual bool Initialize() override;
 	
 	virtual void NativeConstruct() override;
 	
@@ -42,11 +41,14 @@ public:
 	DECLARE_DELEGATE(FOnEquipSelectionStart);
 	FOnEquipSelectionStart OnEquipSelectionStart;
 	
-	DECLARE_DELEGATE_TwoParams(FOnChangedCurrentSlot, EEquipmentSlot EquipmentSlotType, const UInventoryItemSlot* InventoryItemSlot);
-	FOnChangedCurrentSlot OnChangedCurrentSlot;
+	DECLARE_DELEGATE_OneParam(FOnSelectedEquipSlot, UItemEquipmentSlotWidget* ItemEquipmentSlotWidget);
+	FOnSelectedEquipSlot OnSelectedEquipSlot;
 
 protected:
 	
+	UPROPERTY(Transient)
+	UInventoryAC* InventoryAC;
+		
 	UPROPERTY(meta=(BindWidget))
 	UItemEquipmentSlotWidget* EquipSlotLHand1;
 
@@ -143,9 +145,6 @@ private:
 	
 	UFUNCTION()
 	void SetItemEquipped(UItemEquipmentSlotWidget* ItemEquipmentSlotWidget) const;
-	
-	UPROPERTY(Transient)
-	UInventoryAC* InventoryAC;
 
 	UPROPERTY(Transient)
 	UItemEquipmentSlotWidget* CurrentSelectedSlotWidget;

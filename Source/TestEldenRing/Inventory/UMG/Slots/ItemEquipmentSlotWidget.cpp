@@ -65,10 +65,9 @@ void UItemEquipmentSlotWidget::Update(UInventoryItemSlot* InventoryItemSlot)
 }
 
 UInventoryItemSlot* UItemEquipmentSlotWidget::GetInventoryItemSlot()
-{
+{	
 	return ItemSlot;
 }
-
 void UItemEquipmentSlotWidget::ChangeSelectionState(bool bIsSelected)
 {
 	SelectedImage->SetVisibility(bIsSelected ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);

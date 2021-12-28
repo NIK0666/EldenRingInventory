@@ -11,8 +11,19 @@ void UItemInventorySlotWidget::NativeOnMouseEnter(const FGeometry& InGeometry, c
 	if (!IsEmptySlot())
 	{
 		SetSelected();
+	}	
+}
+
+FReply UItemInventorySlotWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+{
+	if (InMouseEvent.GetPressedButtons().Find(EKeys::LeftMouseButton))	//Only PC
+	{
+		if (InventoryItemStartEquipped.IsBound())
+		{
+			InventoryItemStartEquipped.Execute(this);
+		}
 	}
-	
+	return Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
 }
 
 void UItemInventorySlotWidget::Update(UInventoryItemSlot* InventoryItemSlot)
@@ -60,4 +71,9 @@ FText UItemInventorySlotWidget::GetItemName()
 	}
 
 	return ItemSlot->GetItemInfo()->ItemName;
+}
+
+UInventoryItemSlot* UItemInventorySlotWidget::GetInventoryItemSlot()
+{
+	return ItemSlot;
 }

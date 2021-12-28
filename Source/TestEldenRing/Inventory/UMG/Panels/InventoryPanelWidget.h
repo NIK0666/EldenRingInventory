@@ -3,11 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "EquipmentPanelWidget.h"
-#include "ItemInventorySlotWidget.h"
 #include "Blueprint/UserWidget.h"
+
+#include "EquipmentPanelWidget.h"
+
 #include "InventoryPanelWidget.generated.h"
 
+class UItemInventorySlotWidget;
 class UWrapBox;
 class USubcategoriesPanelWidget;
 /**
@@ -39,7 +41,16 @@ public:
 	
 	void EndHidePanel();
 
-protected:
+	DECLARE_DELEGATE(FOnEquipSelection);
+	FOnEquipSelection OnEquipSelection;	
+	
+	DECLARE_DELEGATE_OneParam(FOnChangedCurrentItemSlot, const UInventoryItemSlot* InventoryItemSlot);
+	FOnChangedCurrentItemSlot OnChangedCurrentItemSlot;
+
+protected:	
+	UPROPERTY(Transient)
+	UInventoryAC* InventoryAC;
+	
 	UPROPERTY(meta=(BindWidget))
 	USubcategoriesPanelWidget* SubcategoriesPanel;
 	
@@ -52,13 +63,9 @@ protected:
 	UPROPERTY(meta=(BindWidget))
 	UWrapBox* InventoryWrapBox;
 	
-	TArray<UInventoryItemSlot*> Items;
-	
-	
+	TArray<UInventoryItemSlot*> Items;	
 
-private:	
-	UPROPERTY(Transient)
-	UInventoryAC* InventoryAC;
+private:
 	
 	UPROPERTY(Transient)
 	EEquipmentSlot SelectedEquipmentSlot;

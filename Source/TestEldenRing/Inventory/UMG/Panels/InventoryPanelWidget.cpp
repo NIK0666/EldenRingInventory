@@ -3,9 +3,10 @@
 
 #include "InventoryPanelWidget.h"
 
-#include "ItemInventorySlotWidget.h"
 #include "Components/TextBlock.h"
 #include "Components/WrapBox.h"
+
+#include "TestEldenRing/Inventory/UMG/Slots/ItemInventorySlotWidget.h"
 
 void UInventoryPanelWidget::NativeConstruct()
 {
@@ -18,7 +19,16 @@ void UInventoryPanelWidget::NativeConstruct()
 
 	for (const auto L_ItemWidget : InventoryWrapBox->GetAllChildren())
 	{
-		Cast<UItemInventorySlotWidget>(L_ItemWidget)->InventorySlotSelected.BindUObject(this, &UInventoryPanelWidget::SetSelectedInventorySlot);
+		UItemInventorySlotWidget* L_SlotWidget = Cast<UItemInventorySlotWidget>(L_ItemWidget);
+		L_SlotWidget->InventorySlotSelected.BindUObject(this, &UInventoryPanelWidget::SetSelectedInventorySlot);
+		L_SlotWidget->InventoryItemStartEquipped.BindWeakLambda(this, [this](UItemInventorySlotWidget* ItemInventorySlotWidget)
+		{
+			//CurrentSelectedInventorySlotWidget = ItemInventorySlotWidget;
+			if (OnEquipSelection.IsBound())
+			{				
+				OnEquipSelection.Execute();
+			}
+		});
 	}
 }
 
@@ -71,6 +81,11 @@ void UInventoryPanelWidget::SetSelectedInventorySlot(UItemInventorySlotWidget* N
 	CurrentSelectedInventorySlotWidget = NewSelectedInventorySlot;
 	
 	ItemNameText->SetText(NewSelectedInventorySlot->GetItemName());
+
+	if (OnChangedCurrentItemSlot.IsBound())
+	{
+		OnChangedCurrentItemSlot.Execute(NewSelectedInventorySlot->GetInventoryItemSlot());
+	}
 }
 
 void UInventoryPanelWidget::EquipSelectedItem() const
