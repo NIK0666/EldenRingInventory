@@ -38,8 +38,8 @@ void UEquipmentPanelWidget::NativeConstruct()
 		for (auto L_SlotWidget : L_ChildHBox->GetAllChildren())
 		{
 			UItemEquipmentSlotWidget* L_SlotItemWidget = Cast<UItemEquipmentSlotWidget>(L_SlotWidget);
-			L_SlotItemWidget->SlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
-			L_SlotItemWidget->ItemEquipped.BindUObject(this, &UEquipmentPanelWidget::SetItemEquipped);
+			L_SlotItemWidget->OnSlotSelected.BindUObject(this, &UEquipmentPanelWidget::SetSelectedEquipSlot);
+			L_SlotItemWidget->OnSlotClicked.BindUObject(this, &UEquipmentPanelWidget::SetItemEquipped);
 		}
 	}
 
@@ -176,32 +176,27 @@ UItemEquipmentSlotWidget* UEquipmentPanelWidget::GetItemEquipmentSlotWidget(EEqu
 	}
 }
 
-void UEquipmentPanelWidget::SetSelectedEquipSlot(UItemEquipmentSlotWidget* NewSelectedEquipSlot)
+void UEquipmentPanelWidget::SetSelectedEquipSlot(UBaseSlotWidget* SlotWidget)
 {
 	if (CurrentSelectedSlotWidget)
 	{
 		CurrentSelectedSlotWidget->ChangeSelectionState(false);
-	}	
-	NewSelectedEquipSlot->ChangeSelectionState(true);
-	CurrentSelectedSlotWidget = NewSelectedEquipSlot;
+	}
 	
-	ItemNameText->SetText(NewSelectedEquipSlot->GetItemName());
-	SlotTypeText->SetText(NewSelectedEquipSlot->GetSlotName());
+	SlotWidget->ChangeSelectionState(true);
+	CurrentSelectedSlotWidget = Cast<UItemEquipmentSlotWidget>(SlotWidget);
+	
+	ItemNameText->SetText(CurrentSelectedSlotWidget->GetItemName());
+	SlotTypeText->SetText(CurrentSelectedSlotWidget->GetSlotName());
 	
 	if (OnSelectedEquipSlot.IsBound())
 	{
-		// UInventoryItemSlot* L_OutItemSlot = CurrentSelectedSlotWidget->GetInventoryItemSlot();
-		// if (L_OutItemSlot == nullptr)
-		// {
-		// 	L_OutItemSlot = InventoryAC->GetDefaultEquipment(NewSelectedEquipSlot->EquipmentSlotType);
-		// }
-		// L_OutItemSlot->GetItemInfo()
 		OnSelectedEquipSlot.Execute(CurrentSelectedSlotWidget);
 	}
 	
 }
 
-void UEquipmentPanelWidget::SetItemEquipped(UItemEquipmentSlotWidget* ItemEquipmentSlotWidget) const
+void UEquipmentPanelWidget::SetItemEquipped(UBaseSlotWidget* SlotWidget) const
 {
 	if (OnEquipSelectionStart.IsBound())
 	{

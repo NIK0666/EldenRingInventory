@@ -8,6 +8,7 @@
 #include "TestEldenRing/Inventory/InventoryAC.h"
 #include "EquipmentPanelWidget.generated.h"
 
+class UBaseSlotWidget;
 class UTextBlock;
 class UVerticalBox;
 class UItemEquipmentSlotWidget;
@@ -141,10 +142,10 @@ private:
 	UItemEquipmentSlotWidget* GetItemEquipmentSlotWidget(EEquipmentSlot EquipmentSlotType) const;	
 
 	UFUNCTION()
-	void SetSelectedEquipSlot(UItemEquipmentSlotWidget* NewSelectedEquipSlot);	
+	void SetSelectedEquipSlot(UBaseSlotWidget* SlotWidget);	
 	
 	UFUNCTION()
-	void SetItemEquipped(UItemEquipmentSlotWidget* ItemEquipmentSlotWidget) const;
+	void SetItemEquipped(UBaseSlotWidget* SlotWidget) const;
 
 	UPROPERTY(Transient)
 	UItemEquipmentSlotWidget* CurrentSelectedSlotWidget;

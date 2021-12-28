@@ -33,7 +33,11 @@ public:
 	bool IsEmptySlot();
 
 	UFUNCTION()
+	FText GetItemName();
+
+	UFUNCTION()
 	UInventoryItemSlot* GetInventoryItemSlot() const;
+	
 
 	DECLARE_DELEGATE_OneParam(FOnSlotSelected, UBaseSlotWidget* SlotWidget);
 	FOnSlotSelected OnSlotSelected;

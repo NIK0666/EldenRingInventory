@@ -75,3 +75,13 @@ UInventoryItemSlot* UBaseSlotWidget::GetInventoryItemSlot() const
 {
 	return ItemSlot;
 }
+
+FText UBaseSlotWidget::GetItemName()
+{
+	if (ItemSlot == nullptr)
+	{
+		return FText::FromString(TEXT("-"));
+	}
+
+	return ItemSlot->GetItemInfo()->ItemName;
+}
