@@ -20,10 +20,10 @@ void UInventoryPanelWidget::NativeConstruct()
 	for (const auto L_ItemWidget : InventoryWrapBox->GetAllChildren())
 	{
 		UItemInventorySlotWidget* L_SlotWidget = Cast<UItemInventorySlotWidget>(L_ItemWidget);
-		L_SlotWidget->InventorySlotSelected.BindUObject(this, &UInventoryPanelWidget::SetSelectedInventorySlot);
-		L_SlotWidget->InventoryItemStartEquipped.BindWeakLambda(this, [this](UItemInventorySlotWidget* ItemInventorySlotWidget)
+		L_SlotWidget->OnSlotSelected.BindUObject(this, &UInventoryPanelWidget::SetSelectedInventorySlot);
+
+		L_SlotWidget->OnSlotClicked.BindWeakLambda(this, [this](UBaseSlotWidget* SlotWidget)
 		{
-			//CurrentSelectedInventorySlotWidget = ItemInventorySlotWidget;
 			if (OnEquipSelection.IsBound())
 			{				
 				OnEquipSelection.Execute();
@@ -71,34 +71,43 @@ void UInventoryPanelWidget::Update(const FText& SlotNameText, EEquipmentSlot Equ
 	
 }
 
-void UInventoryPanelWidget::SetSelectedInventorySlot(UItemInventorySlotWidget* NewSelectedInventorySlot)
+void UInventoryPanelWidget::SetSelectedInventorySlot(UBaseSlotWidget* NewSlotWidget)
 {
 	if (CurrentSelectedInventorySlotWidget)
 	{
 		CurrentSelectedInventorySlotWidget->ChangeSelectionState(false);
 	}	
-	NewSelectedInventorySlot->ChangeSelectionState(true);
-	CurrentSelectedInventorySlotWidget = NewSelectedInventorySlot;
-	
-	ItemNameText->SetText(NewSelectedInventorySlot->GetItemName());
+	NewSlotWidget->ChangeSelectionState(true);
+	CurrentSelectedInventorySlotWidget = NewSlotWidget;
 
-	if (OnChangedCurrentItemSlot.IsBound())
+	UInventoryItemSlot* ItemSlot = NewSlotWidget->GetInventoryItemSlot();
+	if (ItemSlot)
 	{
-		OnChangedCurrentItemSlot.Execute(NewSelectedInventorySlot->GetInventoryItemSlot());
+		ItemNameText->SetText(ItemSlot->GetItemInfo()->ItemName);
 	}
+	else
+	{
+		ItemNameText->SetText(FText::FromString("-"));
+	}
+	
+	//TODO Fix Here
+	// if (OnChangedCurrentItemSlot.IsBound())
+	// {
+	// 	OnChangedCurrentItemSlot.Execute(NewSelectedInventorySlot->GetInventoryItemSlot());
+	// }
 }
 
 void UInventoryPanelWidget::EquipSelectedItem() const
 {	
-	InventoryAC->SetEquipItemToSlot(CurrentSelectedInventorySlotWidget->ItemSlot, SelectedEquipmentSlot);
+	InventoryAC->SetEquipItemToSlot(CurrentSelectedInventorySlotWidget->GetInventoryItemSlot(), SelectedEquipmentSlot);
 }
 
-UItemInventorySlotWidget* UInventoryPanelWidget::GetSelectedSlotWidget()
+UBaseSlotWidget* UInventoryPanelWidget::GetSelectedSlotWidget() const
 {
 	return CurrentSelectedInventorySlotWidget;
 }
 
-void UInventoryPanelWidget::MoveHorizontalSelection(bool bPositive)
+void UInventoryPanelWidget::MoveHorizontalSelection(bool bPositive) const
 {
 	if (CurrentSelectedInventorySlotWidget == nullptr)
 	{

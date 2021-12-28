@@ -21,13 +21,13 @@ public:
 	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 
 	UFUNCTION()
-	void Update(UInventoryItemSlot* InventoryItemSlot);
+	virtual void Update(UInventoryItemSlot* InventoryItemSlot);
 
 	UFUNCTION()
 	void SetSelected();
 
 	UFUNCTION()
-	void ChangeSelectionState(bool bIsSelected) const;
+	virtual void ChangeSelectionState(bool bIsSelected) const;
 
 	UFUNCTION()
 	bool IsEmptySlot();

@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "TestEldenRing/Inventory/InventoryItemSlot.h"
+
+#include "BaseSlotWidget.h"
+
 #include "ItemInventorySlotWidget.generated.h"
 
 class UImage;
@@ -12,49 +14,15 @@ class UImage;
  * 
  */
 UCLASS()
-class TESTELDENRING_API UItemInventorySlotWidget : public UUserWidget
+class TESTELDENRING_API UItemInventorySlotWidget : public UBaseSlotWidget
 {
 	GENERATED_BODY()
 public:
-	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
-	
-	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;	
 
-	UFUNCTION()
-	void Update(UInventoryItemSlot* InventoryItemSlot);
+	virtual void Update(UInventoryItemSlot* InventoryItemSlot) override;
 
-	UFUNCTION()
-	void SetSelected();
-
-	UFUNCTION()
-	void ChangeSelectionState(bool bIsSelected);
-
-	UFUNCTION()
-	bool IsEmptySlot();
-
-	UFUNCTION()
-	FText GetItemName();
-
-	UFUNCTION()
-	UInventoryItemSlot* GetInventoryItemSlot(); 
-
-
-	DECLARE_DELEGATE_OneParam(FInventorySlotSelected, UItemInventorySlotWidget* ItemInventorySlotWidget);
-	FInventorySlotSelected InventorySlotSelected;
-
-	DECLARE_DELEGATE_OneParam(FInventoryItemStartEquipped, UItemInventorySlotWidget* ItemInventorySlotWidget);
-	FInventoryItemStartEquipped InventoryItemStartEquipped;
-	
-	UPROPERTY()
-	UInventoryItemSlot* ItemSlot;
-
-protected:
-	UPROPERTY(meta=(BindWidget))
-	UImage* ItemImage;
-	
-	UPROPERTY(meta=(BindWidget))
-	UImage* SelectedImage;
-	
+protected:	
 	UPROPERTY(meta=(BindWidget))
 	UImage* EquipmentImage;
 };

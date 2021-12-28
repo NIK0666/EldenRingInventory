@@ -9,6 +9,7 @@
 
 #include "InventoryPanelWidget.generated.h"
 
+class UBaseSlotWidget;
 class UItemInventorySlotWidget;
 class UWrapBox;
 class USubcategoriesPanelWidget;
@@ -27,15 +28,15 @@ public:
 	void Update(const FText& SlotNameText, EEquipmentSlot EquipmentSlot);
 
 	UFUNCTION()
-	void SetSelectedInventorySlot(UItemInventorySlotWidget* NewSelectedInventorySlot);
+	void SetSelectedInventorySlot(UBaseSlotWidget* NewSlotWidget);
 
 	UFUNCTION()
 	void EquipSelectedItem() const;
 	
 	UFUNCTION()
-	UItemInventorySlotWidget* GetSelectedSlotWidget();
+	UBaseSlotWidget* GetSelectedSlotWidget() const;
 	
-	void MoveHorizontalSelection(bool bPositive);
+	void MoveHorizontalSelection(bool bPositive) const;
 	
 	void MoveVerticalSelection(bool bPositive);
 	
@@ -71,5 +72,5 @@ private:
 	EEquipmentSlot SelectedEquipmentSlot;
 	
 	UPROPERTY(Transient)
-	UItemInventorySlotWidget* CurrentSelectedInventorySlotWidget;
+	UBaseSlotWidget* CurrentSelectedInventorySlotWidget;
 };
