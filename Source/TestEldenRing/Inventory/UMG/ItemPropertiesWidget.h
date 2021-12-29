@@ -21,9 +21,16 @@ class TESTELDENRING_API UItemPropertiesWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void Update(FItem* ItemInfo);
+	void Update(FItem* ItemInfo) const;
 
 protected:
+	void ShowEffectsBlock(const TArray<FItemEffect>& EffectsInfo, const FText& CaptionText) const;
+	void ShowAttackPower(const FAttackPower& AttackPowerInfo) const;
+	void ShowGuardedDamageNegation(const FGuardedDamageNegation& GuardedDamageNegationInfo) const;
+	void ShowAttributeScaling(const FAttributeScaling& AttributeScalingInfo) const;
+	void ShowAttributeRequired(const FAttributeRequired& AttributeRequiredInfo) const;
+	void ShowDamageNegation(const FDamageNegation& DamageNegationInfo) const;
+	void ShowResistance(const FResistance& ResistanceInfo) const;
 
 	// COMMON
 	UPROPERTY(meta=(BindWidget))
@@ -33,19 +40,22 @@ protected:
 	UTextBlock* Common_NameText;
 
 	UPROPERTY(meta=(BindWidget))
-	UPropertyRowWidget* Common_ItemTypeRow;
+	UPropertyRowWidget* Common_Row_0;
 
 	UPROPERTY(meta=(BindWidget))
-	UPropertyRowWidget* Common_DamageTypeRow;
+	UPropertyRowWidget* Common_Row_1;
 
 	UPROPERTY(meta=(BindWidget))
-	UPropertyRowWidget* Common_SuperAttackNameRow;
+	UPropertyRowWidget* Common_Row_2;
 
 	UPROPERTY(meta=(BindWidget))
-	UPropertyRowWidget* Common_FPCostRow;
+	UPropertyRowWidget* Common_Row_3;
 
 	UPROPERTY(meta=(BindWidget))
-	UPropertyRowWidget* Common_WeightRow;
+	UPropertyRowWidget* Common_Row_4;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* Common_Row_5;
 	
 
 	// ICON BLOCK
@@ -77,6 +87,29 @@ protected:
 
 	UPROPERTY(meta=(BindWidget))
 	UPropertyRowWidget* AttackPower_CriticalRow;
+
+	
+	// GUARDED DAMAGE NEGATION
+	UPROPERTY(meta=(BindWidget))
+	UCanvasPanel* GuardedDamageNegation;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* GuardedDamageNegation_PhysicalRow;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* GuardedDamageNegation_MagicRow;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* GuardedDamageNegation_FireRow;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* GuardedDamageNegation_LightningRow;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* GuardedDamageNegation_HolyRow;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* GuardedDamageNegation_GuardBoostRow;
 	
 
 	// DAMAGE NEGATION
@@ -163,4 +196,24 @@ protected:
 
 	UPROPERTY(meta=(BindWidget))
 	UPropertyRowWidget* AttributeRequired_Arc_Row;
+	
+
+	// EFFECTS
+	UPROPERTY(meta=(BindWidget))
+	UCanvasPanel* Effects;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* Effects_CaptionText;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* Effects_Row_0;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* Effects_Row_1;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* Effects_Row_2;
+
+	UPROPERTY(meta=(BindWidget))
+	UPropertyRowWidget* Effects_Row_3;
 };

@@ -29,6 +29,7 @@ bool UPropertyRowWidget::Initialize()
 	}
 
 	ValueText->SetVisibility(bIsValueVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+	
 	ValueText->SetText(Value);
 	
 	CaptionText->SetText(Caption);
@@ -40,6 +41,7 @@ bool UPropertyRowWidget::Initialize()
 
 void UPropertyRowWidget::SetTextValue(const FText& NewValue)
 {
+	ValueText->SetVisibility(ESlateVisibility::Visible);
 	ValueText->SetText(NewValue);
 }
 
@@ -55,11 +57,30 @@ void UPropertyRowWidget::SetIntValue(const int32& NewValue)
 
 void UPropertyRowWidget::SetFloatValue(const float& NewValue)
 {
-	SetStringValue(FString::SanitizeFloat(NewValue, 1));
+	const int32 Decimal = FMath::TruncToInt(NewValue);
+	const int32 Tenth = FMath::RoundToInt(NewValue * 10) - Decimal * 10;
+	SetStringValue(FString::FromInt(Decimal) + "." + FString::FromInt(Tenth));
 }
 
 void UPropertyRowWidget::SetCaption(const FText& NewCaption)
 {
+	CaptionText->SetVisibility(ESlateVisibility::Visible);
 	Caption = NewCaption;
 	CaptionText->SetText(Caption);
+}
+
+void UPropertyRowWidget::HideValue()
+{
+	ValueText->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void UPropertyRowWidget::HideCaption()
+{
+	CaptionText->SetVisibility(ESlateVisibility::Hidden);
+}
+
+void UPropertyRowWidget::Clear()
+{
+	HideCaption();
+	HideValue();
 }

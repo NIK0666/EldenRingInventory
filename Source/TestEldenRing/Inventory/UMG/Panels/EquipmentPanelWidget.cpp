@@ -101,6 +101,11 @@ void UEquipmentPanelWidget::EquipRemove() const
 	if (!CurrentSelectedSlotWidget->IsEmptySlot())
 	{
 		InventoryAC->ClearEquipSlot(CurrentSelectedSlotWidget->EquipmentSlotType);
+
+		if (OnChangedLookItemInfo.IsBound())
+		{
+			OnChangedLookItemInfo.Execute(InventoryAC->GetEmptyEquipmentInfo(CurrentSelectedSlotWidget->EquipmentSlotType));
+		}		
 	}
 }
 

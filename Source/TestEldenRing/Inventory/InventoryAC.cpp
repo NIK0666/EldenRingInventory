@@ -29,7 +29,7 @@ UInventoryItemSlot* UInventoryAC::AddItem(const FDataTableRowHandle& ItemRow, in
 	
 	if (Item->IsConsumable())
 	{
-		const FConsumableItem* ConsumableItem = static_cast<FConsumableItem*>(Item);
+		const FBaseConsumableItem* ConsumableItem = static_cast<FBaseConsumableItem*>(Item);
 
 		if (UInventoryItemSlot* Slot = FindInventoryItemSlot(ItemRow))
 		{

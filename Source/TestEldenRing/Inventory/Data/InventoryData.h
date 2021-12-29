@@ -17,7 +17,8 @@ enum class EWeaponSubtype : uint8
 	Spear			UMETA(DisplayName = "Spear"),
 	Bow				UMETA(DisplayName = "Bow"),
 	Crossbow		UMETA(DisplayName = "Crossbow"),
-	Shield			UMETA(DisplayName = "Shield")
+	Shield			UMETA(DisplayName = "Shield"),
+	Fists			UMETA(DisplayName = "Fists")
 };
 
 UENUM()
@@ -32,7 +33,7 @@ enum class EDamageType: uint8
 };
 
 UENUM()
-enum class EScalingValue
+enum class EScalingValue: uint8
 {
 	NoScaling = 0	UMETA(DisplayName = "-"),
 	E				UMETA(DisplayName = "E"),
@@ -41,6 +42,44 @@ enum class EScalingValue
 	B				UMETA(DisplayName = "B"),
 	A				UMETA(DisplayName = "A"),
 	S				UMETA(DisplayName = "S")
+};
+
+UENUM()
+enum class EItemType
+{
+	Item = 0,
+	Weapon,
+	// Helm,
+	Armor,
+	// Gloves,
+	// Boots,
+	Arrows,
+	Bolts,
+	Amulet,
+	Consumable
+};
+
+UENUM()
+enum class EItemEffectType: uint8
+{
+	None = 0,
+	MaxHP,
+	MaxFP,
+	RegenHP,
+	MaxEquipLoad
+};
+
+
+USTRUCT(BlueprintType)
+struct TESTELDENRING_API FItemEffect
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EItemEffectType EffectType;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Value;
 };
 
 USTRUCT(BlueprintType)
@@ -91,7 +130,7 @@ struct TESTELDENRING_API FSuperAttack
 	GENERATED_BODY()
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText AttackName;
+	FText AttackName = FText::FromString("No skill");
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float FPCost;
@@ -130,22 +169,22 @@ struct TESTELDENRING_API FGuardedDamageNegation
 	GENERATED_BODY()
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Physical;
+	float Physical;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Magic;
+	float Magic;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Fire;
+	float Fire;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Lightning;
+	float Lightning;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Holy;
+	float Holy;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 GuardBoost;
+	float GuardBoost;
 };
 
 USTRUCT(BlueprintType)
@@ -172,6 +211,9 @@ struct TESTELDENRING_API FDamageNegation
 	float Fire;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Lightning;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Holy;
 };
 
@@ -192,6 +234,8 @@ struct TESTELDENRING_API FResistance
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Death;
 };
+
+
 
 
 /**
@@ -221,7 +265,11 @@ struct TESTELDENRING_API FItem: public FTableRowBase
 	{
 		return false;
 	}
-	
+
+	virtual EItemType ItemType()
+	{		
+		return EItemType::Item;
+	}
 };
 
 /**
@@ -255,6 +303,14 @@ struct TESTELDENRING_API FWeaponItem : public FItem
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FAttributeRequired AttributeRequired;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FItemEffect> PassiveEffects;
+
+	virtual EItemType ItemType() override
+	{		
+		return EItemType::Weapon;
+	}
 };
 
 /**
@@ -270,13 +326,18 @@ struct TESTELDENRING_API FArmorItem : public FItem
 		
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FResistance Resistance;
+
+	virtual EItemType ItemType() override
+	{		
+		return EItemType::Armor;
+	}
 };
 
 /**
- * Consumable item struct
+ * Base Consumable item struct (Abstract)
  */
 USTRUCT(BlueprintType)
-struct TESTELDENRING_API FConsumableItem : public FItem
+struct TESTELDENRING_API FBaseConsumableItem : public FItem
 {
 	GENERATED_BODY()
 	
@@ -287,18 +348,69 @@ struct TESTELDENRING_API FConsumableItem : public FItem
 	{
 		return true;
 	}
+
+	virtual EItemType ItemType() override
+	{		
+		return EItemType::Consumable;
+	}
 };
 
 /**
  * Arrows item struct
  */
 USTRUCT(BlueprintType)
-struct TESTELDENRING_API FArrowsItem : public FConsumableItem
+struct TESTELDENRING_API FArrowsItem : public FBaseConsumableItem
 {
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FAttackPower AttackPower;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FItemEffect> PassiveEffects;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EDamageType DamageType;
+
+	virtual EItemType ItemType() override
+	{		
+		return EItemType::Arrows;
+	}
+};
+
+/**
+ * Arrows item struct
+ */
+USTRUCT(BlueprintType)
+struct TESTELDENRING_API FAmuletItem : public FItem
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FItemEffect> ItemEffects;
+
+	virtual EItemType ItemType() override
+	{		
+		return EItemType::Amulet;
+	}
+};
+
+/**
+ * Consumable item struct
+ */
+USTRUCT(BlueprintType)
+struct TESTELDENRING_API FConsumableItem : public FBaseConsumableItem
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float FPCost;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FItemEffect> ItemEffects;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FAttributeScaling AttributeScaling;
 };
 
 

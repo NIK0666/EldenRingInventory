@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "TestEldenRing/Inventory/Data/InventoryData.h"
 #include "PropertyRowWidget.generated.h"
 
 class USizeBox;
@@ -32,6 +33,18 @@ public:
 
 	UFUNCTION()
 	void SetCaption(const FText& NewCaption);
+	
+	template<typename T>
+	void SetEnumValue(T* EnumType, uint8 Value);
+	
+	template <typename T>
+	void SetEnumCaption(T* EnumType, uint8 Value);
+	
+	void HideValue();
+	
+	void HideCaption();
+	
+	void Clear();
 
 protected:
 
@@ -58,3 +71,15 @@ protected:
 	UPROPERTY(EditInstanceOnly)
 	float WidthMax = 557.f;
 };
+
+template <typename T>
+void UPropertyRowWidget::SetEnumValue(T* EnumType, uint8 Value)
+{
+	SetTextValue(EnumType->GetDisplayNameTextByValue(Value));
+}
+
+template <typename T>
+void UPropertyRowWidget::SetEnumCaption(T* EnumType, uint8 Value)
+{
+	SetCaption(EnumType->GetDisplayNameTextByValue(Value));
+}
