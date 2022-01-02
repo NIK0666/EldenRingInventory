@@ -84,7 +84,7 @@ void UInventoryPanelWidget::SetSelectedInventorySlot(UBaseSlotWidget* NewSlotWid
 	
 	if (OnChangedLookItemInfo.IsBound())
 	{
-		OnChangedLookItemInfo.Execute(NewSlotWidget->GetInventoryItemSlot()->GetItemInfo());
+		OnChangedLookItemInfo.Execute(NewSlotWidget->GetInventoryItemSlot()->GetItemInfo(), NewSlotWidget->GetInventoryItemSlot());
 	}
 }
 

@@ -5,9 +5,8 @@
 #include "Components/CanvasPanel.h"
 #include "GameFramework/InputSettings.h"
 
-#include "ItemPropertiesWidget.h"
+#include "Panels/ItemPropertiesPanelWidget.h"
 #include "Panels/InventoryPanelWidget.h"
-#include "Slots/ItemEquipmentSlotWidget.h"
 #include "Slots/ItemInventorySlotWidget.h"
 
 bool UInventoryWidget::Initialize()
@@ -37,14 +36,14 @@ bool UInventoryWidget::Initialize()
 		InventorySelectionStart();
 	});
 
-	EquipmentPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo)
+	EquipmentPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot)
 	{
-		ItemProperties->Update(ItemInfo);				
+		ItemProperties->Update(ItemInfo, InventoryItemSlot);				
 	});
 	
-	InventoryPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo)
+	InventoryPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot)
 	{
-		ItemProperties->Update(ItemInfo);
+		ItemProperties->Update(ItemInfo, InventoryItemSlot);
 	});
 	
 	return true;

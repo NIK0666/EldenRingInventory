@@ -42,7 +42,7 @@ public:
 	DECLARE_DELEGATE(FOnEquipSelectionStart);
 	FOnEquipSelectionStart OnEquipSelectionStart;
 	
-	DECLARE_DELEGATE_OneParam(FOnChangedLookItemInfo, FItem* ItemInfo);
+	DECLARE_DELEGATE_TwoParams(FOnChangedLookItemInfo, FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot);
 	FOnChangedLookItemInfo OnChangedLookItemInfo;
 
 protected:

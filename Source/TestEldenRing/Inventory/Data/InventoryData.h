@@ -49,10 +49,7 @@ enum class EItemType
 {
 	Item = 0,
 	Weapon,
-	// Helm,
 	Armor,
-	// Gloves,
-	// Boots,
 	Arrows,
 	Bolts,
 	Amulet,
@@ -343,6 +340,9 @@ struct TESTELDENRING_API FBaseConsumableItem : public FItem
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 MaxCount = 1;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxStoredCount = 600;
 
 	virtual bool IsConsumable() override
 	{

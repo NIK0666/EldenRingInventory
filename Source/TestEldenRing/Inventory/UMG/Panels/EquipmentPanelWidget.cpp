@@ -104,7 +104,7 @@ void UEquipmentPanelWidget::EquipRemove() const
 
 		if (OnChangedLookItemInfo.IsBound())
 		{
-			OnChangedLookItemInfo.Execute(InventoryAC->GetEmptyEquipmentInfo(CurrentSelectedSlotWidget->EquipmentSlotType));
+			OnChangedLookItemInfo.Execute(InventoryAC->GetEmptyEquipmentInfo(CurrentSelectedSlotWidget->EquipmentSlotType), CurrentSelectedSlotWidget->GetInventoryItemSlot());
 		}		
 	}
 }
@@ -198,11 +198,11 @@ void UEquipmentPanelWidget::SetSelectedEquipSlot(UBaseSlotWidget* SlotWidget)
 	{
 		if (SlotWidget->GetInventoryItemSlot())
 		{
-			OnChangedLookItemInfo.Execute(SlotWidget->GetInventoryItemSlot()->GetItemInfo());
+			OnChangedLookItemInfo.Execute(SlotWidget->GetInventoryItemSlot()->GetItemInfo(), CurrentSelectedSlotWidget->GetInventoryItemSlot());
 		}
 		else
 		{
-			OnChangedLookItemInfo.Execute(InventoryAC->GetEmptyEquipmentInfo(CurrentSelectedSlotWidget->EquipmentSlotType));
+			OnChangedLookItemInfo.Execute(InventoryAC->GetEmptyEquipmentInfo(CurrentSelectedSlotWidget->EquipmentSlotType), CurrentSelectedSlotWidget->GetInventoryItemSlot());
 		}
 	}
 	

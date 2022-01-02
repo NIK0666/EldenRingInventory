@@ -21,9 +21,7 @@ enum class EInventoryUIState
 	SelectItem,
 	Animated	
 };
-/**
- * 
- */
+
 UCLASS(BlueprintType)
 class TESTELDENRING_API UInventoryWidget : public UUserWidget
 {
@@ -55,9 +53,6 @@ protected:
 
 	UPROPERTY(meta=(BindWidgetAnim), Transient)
 	UWidgetAnimation* InventoryToEquipmentPanelAnim;
-
-	// UPROPERTY()
-	// UInventoryAC* InventoryAC;
 
 private:
 	UFUNCTION()
