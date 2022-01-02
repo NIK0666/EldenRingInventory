@@ -34,15 +34,18 @@ public:
 	void EquipRemove() const;
 
 	UFUNCTION()
-	FText GetSelectedSlotName();
+	FText GetSelectedSlotName() const;
 
 	UFUNCTION()
-	EEquipmentSlot GetSelectedSlotType();
+	EEquipmentSlot GetSelectedSlotType() const;
+
+	UFUNCTION()
+	void ChangedLookItemInfo() const;
 
 	DECLARE_DELEGATE(FOnEquipSelectionStart);
 	FOnEquipSelectionStart OnEquipSelectionStart;
 	
-	DECLARE_DELEGATE_TwoParams(FOnChangedLookItemInfo, FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot);
+	DECLARE_DELEGATE_ThreeParams(FOnChangedLookItemInfo, FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot, FItem* ComparedItemInfo);
 	FOnChangedLookItemInfo OnChangedLookItemInfo;
 
 protected:
@@ -142,8 +145,8 @@ private:
 	UItemEquipmentSlotWidget* GetItemEquipmentSlotWidget(EEquipmentSlot EquipmentSlotType) const;	
 
 	UFUNCTION()
-	void SetSelectedEquipSlot(UBaseSlotWidget* SlotWidget);	
-	
+	void SetSelectedEquipSlot(UBaseSlotWidget* SlotWidget);
+
 	UFUNCTION()
 	void SetItemEquipped(UBaseSlotWidget* SlotWidget) const;
 

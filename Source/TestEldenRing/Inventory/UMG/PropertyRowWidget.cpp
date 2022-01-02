@@ -96,6 +96,11 @@ void UPropertyRowWidget::Clear()
 	HideValue();
 }
 
+void UPropertyRowWidget::SetValueColor(const FSlateColor& ValueColor)
+{
+	ValueText->SetColorAndOpacity(ValueColor);
+}
+
 FString UPropertyRowWidget::FloatToString(float Value)
 {
 	const int32 Decimal = FMath::TruncToInt(Value);

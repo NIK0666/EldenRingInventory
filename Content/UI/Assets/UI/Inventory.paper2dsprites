@@ -264,120 +264,48 @@
         "y": 0.5
       }
     },
-    "ItemEquipmentSlotFG": {
+    "ItemFrameBig": {
       "frame": {
         "x": 1733,
         "y": 543,
-        "w": 244,
-        "h": 267
+        "w": 255,
+        "h": 214
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 244,
-        "h": 267
+        "w": 255,
+        "h": 214
       },
       "sourceSize": {
-        "w": 244,
-        "h": 267
+        "w": 255,
+        "h": 214
       },
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "PSButtonL2": {
+    "GuardedGamageNegationIcon": {
       "frame": {
-        "x": 1985,
+        "x": 1996,
         "y": 578,
-        "w": 58,
-        "h": 57
+        "w": 47,
+        "h": 60
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 58,
-        "h": 57
+        "w": 47,
+        "h": 60
       },
       "sourceSize": {
-        "w": 58,
-        "h": 57
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PSButtonR2": {
-      "frame": {
-        "x": 1985,
-        "y": 643,
-        "w": 58,
-        "h": 57
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 58,
-        "h": 57
-      },
-      "sourceSize": {
-        "w": 58,
-        "h": 57
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PSButtonL1": {
-      "frame": {
-        "x": 1985,
-        "y": 708,
-        "w": 55,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 55,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 55,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PSButtonR1": {
-      "frame": {
-        "x": 1985,
-        "y": 764,
-        "w": 55,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 55,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 55,
-        "h": 48
+        "w": 47,
+        "h": 60
       },
       "pivot": {
         "x": 0.5,
@@ -408,10 +336,154 @@
         "y": 0.5
       }
     },
+    "ItemEquipmentSlotFG": {
+      "frame": {
+        "x": 1733,
+        "y": 765,
+        "w": 244,
+        "h": 267
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 244,
+        "h": 267
+      },
+      "sourceSize": {
+        "w": 244,
+        "h": 267
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonL2": {
+      "frame": {
+        "x": 1985,
+        "y": 765,
+        "w": 58,
+        "h": 57
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 57
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 57
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonR2": {
+      "frame": {
+        "x": 1985,
+        "y": 830,
+        "w": 58,
+        "h": 57
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 57
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 57
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonL1": {
+      "frame": {
+        "x": 1985,
+        "y": 895,
+        "w": 55,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 55,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 55,
+        "h": 48
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonR1": {
+      "frame": {
+        "x": 1985,
+        "y": 951,
+        "w": 55,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 55,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 55,
+        "h": 48
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "DamageNegationIcon": {
+      "frame": {
+        "x": 1985,
+        "y": 1007,
+        "w": 52,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 52,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 52,
+        "h": 63
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
     "ItemEquipmentSlotSelected": {
       "frame": {
         "x": 4,
-        "y": 367,
+        "y": 1078,
         "w": 224,
         "h": 245
       },
@@ -434,8 +506,8 @@
     },
     "ItemSlotBG": {
       "frame": {
-        "x": 236,
-        "y": 367,
+        "x": 4,
+        "y": 812,
         "w": 208,
         "h": 232
       },
@@ -458,8 +530,8 @@
     },
     "ItemEquipmentSlotBG": {
       "frame": {
-        "x": 452,
-        "y": 367,
+        "x": 4,
+        "y": 546,
         "w": 208,
         "h": 229
       },
@@ -480,9 +552,297 @@
         "y": 0.5
       }
     },
+    "PlaceholderConsumables": {
+      "frame": {
+        "x": 4,
+        "y": 367,
+        "w": 127,
+        "h": 169
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 127,
+        "h": 169
+      },
+      "sourceSize": {
+        "w": 127,
+        "h": 169
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PlaceholderArmor": {
+      "frame": {
+        "x": 139,
+        "y": 367,
+        "w": 136,
+        "h": 168
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 136,
+        "h": 168
+      },
+      "sourceSize": {
+        "w": 136,
+        "h": 168
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PlaceholderLeftHandWeapon": {
+      "frame": {
+        "x": 220,
+        "y": 812,
+        "w": 137,
+        "h": 172
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 137,
+        "h": 172
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 172
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonO": {
+      "frame": {
+        "x": 220,
+        "y": 992,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonR3": {
+      "frame": {
+        "x": 292,
+        "y": 992,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PlaceholderArrows": {
+      "frame": {
+        "x": 220,
+        "y": 546,
+        "w": 127,
+        "h": 172
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 127,
+        "h": 172
+      },
+      "sourceSize": {
+        "w": 127,
+        "h": 172
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PlaceholderBolts": {
+      "frame": {
+        "x": 283,
+        "y": 367,
+        "w": 127,
+        "h": 168
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 127,
+        "h": 168
+      },
+      "sourceSize": {
+        "w": 127,
+        "h": 168
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonSquare": {
+      "frame": {
+        "x": 220,
+        "y": 726,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonTriangle": {
+      "frame": {
+        "x": 292,
+        "y": 726,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PlaceholderBoots": {
+      "frame": {
+        "x": 355,
+        "y": 546,
+        "w": 127,
+        "h": 168
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 127,
+        "h": 168
+      },
+      "sourceSize": {
+        "w": 127,
+        "h": 168
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PlaceholderGloves": {
+      "frame": {
+        "x": 418,
+        "y": 367,
+        "w": 127,
+        "h": 168
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 127,
+        "h": 168
+      },
+      "sourceSize": {
+        "w": 127,
+        "h": 168
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonX": {
+      "frame": {
+        "x": 364,
+        "y": 722,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
     "SubcategoryAxe": {
       "frame": {
-        "x": 668,
+        "x": 553,
         "y": 367,
         "w": 144,
         "h": 144
@@ -506,7 +866,7 @@
     },
     "SubcategoryBoots": {
       "frame": {
-        "x": 820,
+        "x": 705,
         "y": 367,
         "w": 144,
         "h": 144
@@ -530,7 +890,7 @@
     },
     "SubcategoryCrossbow": {
       "frame": {
-        "x": 972,
+        "x": 857,
         "y": 367,
         "w": 144,
         "h": 144
@@ -546,78 +906,6 @@
       "sourceSize": {
         "w": 144,
         "h": 144
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PSButtonSelect": {
-      "frame": {
-        "x": 1124,
-        "y": 367,
-        "w": 66,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 66,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 66,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PSButtonO": {
-      "frame": {
-        "x": 1124,
-        "y": 423,
-        "w": 64,
-        "h": 64
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 64,
-        "h": 64
-      },
-      "sourceSize": {
-        "w": 64,
-        "h": 64
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PSButtonR3": {
-      "frame": {
-        "x": 1124,
-        "y": 495,
-        "w": 64,
-        "h": 64
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 64,
-        "h": 64
-      },
-      "sourceSize": {
-        "w": 64,
-        "h": 64
       },
       "pivot": {
         "x": 0.5,
@@ -626,8 +914,8 @@
     },
     "SubcategoryGloves": {
       "frame": {
-        "x": 1196,
-        "y": 546,
+        "x": 1009,
+        "y": 367,
         "w": 144,
         "h": 144
       },
@@ -648,24 +936,24 @@
         "y": 0.5
       }
     },
-    "DamageNegationIcon": {
+    "SubcategoryHelm": {
       "frame": {
-        "x": 1348,
-        "y": 546,
-        "w": 52,
-        "h": 63
+        "x": 553,
+        "y": 519,
+        "w": 144,
+        "h": 144
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 52,
-        "h": 63
+        "w": 144,
+        "h": 144
       },
       "sourceSize": {
-        "w": 52,
-        "h": 63
+        "w": 144,
+        "h": 144
       },
       "pivot": {
         "x": 0.5,
@@ -674,8 +962,8 @@
     },
     "ResistanceIcon": {
       "frame": {
-        "x": 1348,
-        "y": 617,
+        "x": 490,
+        "y": 543,
         "w": 52,
         "h": 63
       },
@@ -698,8 +986,8 @@
     },
     "AttributesRequiredIcon": {
       "frame": {
-        "x": 1348,
-        "y": 688,
+        "x": 490,
+        "y": 614,
         "w": 52,
         "h": 60
       },
@@ -714,30 +1002,6 @@
       "sourceSize": {
         "w": 52,
         "h": 60
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "SubcategoryHelm": {
-      "frame": {
-        "x": 668,
-        "y": 519,
-        "w": 144,
-        "h": 144
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 144,
-        "h": 144
-      },
-      "sourceSize": {
-        "w": 144,
-        "h": 144
       },
       "pivot": {
         "x": 0.5,
@@ -746,8 +1010,8 @@
     },
     "SubcategoryShield": {
       "frame": {
-        "x": 452,
-        "y": 604,
+        "x": 705,
+        "y": 519,
         "w": 144,
         "h": 144
       },
@@ -762,54 +1026,6 @@
       "sourceSize": {
         "w": 144,
         "h": 144
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "CharacterStatusIcon": {
-      "frame": {
-        "x": 604,
-        "y": 604,
-        "w": 52,
-        "h": 56
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 52,
-        "h": 56
-      },
-      "sourceSize": {
-        "w": 52,
-        "h": 56
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "AttributeScalingIcon": {
-      "frame": {
-        "x": 604,
-        "y": 668,
-        "w": 52,
-        "h": 53
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 52,
-        "h": 53
-      },
-      "sourceSize": {
-        "w": 52,
-        "h": 53
       },
       "pivot": {
         "x": 0.5,
@@ -818,8 +1034,8 @@
     },
     "SubcategorySpear": {
       "frame": {
-        "x": 236,
-        "y": 607,
+        "x": 857,
+        "y": 519,
         "w": 144,
         "h": 144
       },
@@ -834,54 +1050,6 @@
       "sourceSize": {
         "w": 144,
         "h": 144
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "AttackPowerIcon": {
-      "frame": {
-        "x": 388,
-        "y": 607,
-        "w": 50,
-        "h": 61
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 50,
-        "h": 61
-      },
-      "sourceSize": {
-        "w": 50,
-        "h": 61
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "GuardedGamageNegationIcon": {
-      "frame": {
-        "x": 388,
-        "y": 676,
-        "w": 47,
-        "h": 60
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 47,
-        "h": 60
-      },
-      "sourceSize": {
-        "w": 47,
-        "h": 60
       },
       "pivot": {
         "x": 0.5,
@@ -890,286 +1058,22 @@
     },
     "SubcategorySword": {
       "frame": {
-        "x": 4,
-        "y": 620,
-        "w": 144,
-        "h": 144
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 144,
-        "h": 144
-      },
-      "sourceSize": {
-        "w": 144,
-        "h": 144
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PSButtonSquare": {
-      "frame": {
-        "x": 156,
-        "y": 620,
-        "w": 64,
-        "h": 64
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 64,
-        "h": 64
-      },
-      "sourceSize": {
-        "w": 64,
-        "h": 64
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PSButtonTriangle": {
-      "frame": {
-        "x": 156,
-        "y": 692,
-        "w": 64,
-        "h": 64
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 64,
-        "h": 64
-      },
-      "sourceSize": {
-        "w": 64,
-        "h": 64
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PlaceholderLeftHandWeapon": {
-      "frame": {
-        "x": 820,
+        "x": 1009,
         "y": 519,
-        "w": 137,
-        "h": 172
+        "w": 144,
+        "h": 144
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 137,
-        "h": 172
+        "w": 144,
+        "h": 144
       },
       "sourceSize": {
-        "w": 137,
-        "h": 172
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PlaceholderArmor": {
-      "frame": {
-        "x": 664,
-        "y": 671,
-        "w": 136,
-        "h": 168
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 136,
-        "h": 168
-      },
-      "sourceSize": {
-        "w": 136,
-        "h": 168
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PlaceholderArrows": {
-      "frame": {
-        "x": 965,
-        "y": 519,
-        "w": 127,
-        "h": 172
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 127,
-        "h": 172
-      },
-      "sourceSize": {
-        "w": 127,
-        "h": 172
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PSButtonX": {
-      "frame": {
-        "x": 1100,
-        "y": 567,
-        "w": 64,
-        "h": 64
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 64,
-        "h": 64
-      },
-      "sourceSize": {
-        "w": 64,
-        "h": 64
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PassiveEffectsIcon": {
-      "frame": {
-        "x": 1100,
-        "y": 639,
-        "w": 61,
-        "h": 59
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 61,
-        "h": 59
-      },
-      "sourceSize": {
-        "w": 61,
-        "h": 59
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PlaceholderConsumables": {
-      "frame": {
-        "x": 1169,
-        "y": 698,
-        "w": 127,
-        "h": 169
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 127,
-        "h": 169
-      },
-      "sourceSize": {
-        "w": 127,
-        "h": 169
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PlaceholderBolts": {
-      "frame": {
-        "x": 388,
-        "y": 756,
-        "w": 127,
-        "h": 168
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 127,
-        "h": 168
-      },
-      "sourceSize": {
-        "w": 127,
-        "h": 168
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PlaceholderBoots": {
-      "frame": {
-        "x": 523,
-        "y": 759,
-        "w": 127,
-        "h": 168
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 127,
-        "h": 168
-      },
-      "sourceSize": {
-        "w": 127,
-        "h": 168
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "PlaceholderGloves": {
-      "frame": {
-        "x": 228,
-        "y": 759,
-        "w": 127,
-        "h": 168
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 127,
-        "h": 168
-      },
-      "sourceSize": {
-        "w": 127,
-        "h": 168
+        "w": 144,
+        "h": 144
       },
       "pivot": {
         "x": 0.5,
@@ -1178,8 +1082,8 @@
     },
     "PlaceholderHelm": {
       "frame": {
-        "x": 363,
-        "y": 932,
+        "x": 1161,
+        "y": 546,
         "w": 127,
         "h": 168
       },
@@ -1194,6 +1098,102 @@
       "sourceSize": {
         "w": 127,
         "h": 168
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PSButtonSelect": {
+      "frame": {
+        "x": 1296,
+        "y": 546,
+        "w": 66,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 66,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 66,
+        "h": 48
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "PassiveEffectsIcon": {
+      "frame": {
+        "x": 1296,
+        "y": 602,
+        "w": 61,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 61,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 61,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "CharacterStatusIcon": {
+      "frame": {
+        "x": 1296,
+        "y": 669,
+        "w": 52,
+        "h": 56
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 52,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 52,
+        "h": 56
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "AttackPowerIcon": {
+      "frame": {
+        "x": 1356,
+        "y": 669,
+        "w": 50,
+        "h": 61
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 61
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 61
       },
       "pivot": {
         "x": 0.5,
@@ -1202,8 +1202,8 @@
     },
     "PlaceholderRightHandWeapon": {
       "frame": {
-        "x": 363,
-        "y": 1108,
+        "x": 550,
+        "y": 671,
         "w": 127,
         "h": 168
       },
@@ -1224,10 +1224,34 @@
         "y": 0.5
       }
     },
+    "AttributeScalingIcon": {
+      "frame": {
+        "x": 490,
+        "y": 682,
+        "w": 52,
+        "h": 53
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 52,
+        "h": 53
+      },
+      "sourceSize": {
+        "w": 52,
+        "h": 53
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
     "EquipmentIcon": {
       "frame": {
-        "x": 4,
-        "y": 772,
+        "x": 365,
+        "y": 794,
         "w": 124,
         "h": 126
       },
@@ -1250,8 +1274,8 @@
     },
     "TitleIconBG": {
       "frame": {
-        "x": 4,
-        "y": 906,
+        "x": 685,
+        "y": 671,
         "w": 122,
         "h": 126
       },

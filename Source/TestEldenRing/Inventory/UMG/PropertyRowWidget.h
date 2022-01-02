@@ -50,6 +50,9 @@ public:
 	void HideCaption();
 	
 	void Clear();
+	
+	void SetValueColor(const FSlateColor& ValueColor);
+	
 protected:	
 	UPROPERTY(meta=(BindWidget))
 	USizeBox* RootSizeBox;

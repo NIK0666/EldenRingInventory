@@ -63,7 +63,8 @@ private:
 
 	void InventorySelectionStart();
 	void SimpleViewChange();
-	
+	void ShowItemInfoDetails();
+
 	EInventoryUIState InventoryUIState = EInventoryUIState::Equipment;
 
 	bool bIsSimpleView = false;

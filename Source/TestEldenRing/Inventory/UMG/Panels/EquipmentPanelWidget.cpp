@@ -101,20 +101,17 @@ void UEquipmentPanelWidget::EquipRemove() const
 	if (!CurrentSelectedSlotWidget->IsEmptySlot())
 	{
 		InventoryAC->ClearEquipSlot(CurrentSelectedSlotWidget->EquipmentSlotType);
-
-		if (OnChangedLookItemInfo.IsBound())
-		{
-			OnChangedLookItemInfo.Execute(InventoryAC->GetEmptyEquipmentInfo(CurrentSelectedSlotWidget->EquipmentSlotType), CurrentSelectedSlotWidget->GetInventoryItemSlot());
-		}		
+		
+		ChangedLookItemInfo();		
 	}
 }
 
-FText UEquipmentPanelWidget::GetSelectedSlotName()
+FText UEquipmentPanelWidget::GetSelectedSlotName() const
 {
 	return CurrentSelectedSlotWidget->GetSlotName();
 }
 
-EEquipmentSlot UEquipmentPanelWidget::GetSelectedSlotType()
+EEquipmentSlot UEquipmentPanelWidget::GetSelectedSlotType() const
 {
 	return CurrentSelectedSlotWidget->EquipmentSlotType;
 }
@@ -194,18 +191,25 @@ void UEquipmentPanelWidget::SetSelectedEquipSlot(UBaseSlotWidget* SlotWidget)
 	ItemNameText->SetText(CurrentSelectedSlotWidget->GetItemName());
 	SlotTypeText->SetText(CurrentSelectedSlotWidget->GetSlotName());
 
+	ChangedLookItemInfo();
+	
+}
+
+void UEquipmentPanelWidget::ChangedLookItemInfo() const
+{
 	if (OnChangedLookItemInfo.IsBound())
 	{
-		if (SlotWidget->GetInventoryItemSlot())
+		if (CurrentSelectedSlotWidget->GetInventoryItemSlot())
 		{
-			OnChangedLookItemInfo.Execute(SlotWidget->GetInventoryItemSlot()->GetItemInfo(), CurrentSelectedSlotWidget->GetInventoryItemSlot());
+			OnChangedLookItemInfo.Execute(
+				CurrentSelectedSlotWidget->GetInventoryItemSlot()->GetItemInfo(), CurrentSelectedSlotWidget->GetInventoryItemSlot(), nullptr);
 		}
 		else
 		{
-			OnChangedLookItemInfo.Execute(InventoryAC->GetEmptyEquipmentInfo(CurrentSelectedSlotWidget->EquipmentSlotType), CurrentSelectedSlotWidget->GetInventoryItemSlot());
+			OnChangedLookItemInfo.Execute(
+				InventoryAC->GetEmptyEquipmentInfo(CurrentSelectedSlotWidget->EquipmentSlotType), CurrentSelectedSlotWidget->GetInventoryItemSlot(), nullptr);
 		}
 	}
-	
 }
 
 void UEquipmentPanelWidget::SetItemEquipped(UBaseSlotWidget* SlotWidget) const

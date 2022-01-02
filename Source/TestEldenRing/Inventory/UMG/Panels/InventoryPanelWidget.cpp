@@ -36,11 +36,11 @@ void UInventoryPanelWidget::Update(const FText& SlotNameText, EEquipmentSlot Equ
 {
 	InventorySlotTypeText->SetText(SlotNameText);
 
-	const FEquipmentSlot* ItemSlot = InventoryAC->GetInventoryItemSlotByEquipmentType(EquipmentSlot);
+	CurrentEquipmentItemSlot = InventoryAC->GetInventoryItemSlotByEquipmentType(EquipmentSlot);
 	
-	if (ItemSlot != nullptr)
+	if (CurrentEquipmentItemSlot != nullptr)
 	{
-		Items = InventoryAC->GetInventoryItems(ItemSlot->DataTable);
+		Items = InventoryAC->GetInventoryItems(CurrentEquipmentItemSlot->DataTable);
 	}
 	else
 	{
@@ -84,7 +84,19 @@ void UInventoryPanelWidget::SetSelectedInventorySlot(UBaseSlotWidget* NewSlotWid
 	
 	if (OnChangedLookItemInfo.IsBound())
 	{
-		OnChangedLookItemInfo.Execute(NewSlotWidget->GetInventoryItemSlot()->GetItemInfo(), NewSlotWidget->GetInventoryItemSlot());
+		if (CurrentEquipmentItemSlot->InventoryItemSlot)
+		{
+			OnChangedLookItemInfo.Execute(
+				NewSlotWidget->GetInventoryItemSlot()->GetItemInfo(), NewSlotWidget->GetInventoryItemSlot(),
+				CurrentEquipmentItemSlot->InventoryItemSlot->GetItemInfo());
+		}
+		else
+		{
+			OnChangedLookItemInfo.Execute(
+				NewSlotWidget->GetInventoryItemSlot()->GetItemInfo(), NewSlotWidget->GetInventoryItemSlot(),
+				InventoryAC->GetEmptyEquipmentInfo(SelectedEquipmentSlot));
+		}
+		
 	}
 }
 

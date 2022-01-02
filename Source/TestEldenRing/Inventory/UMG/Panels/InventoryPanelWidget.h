@@ -44,8 +44,8 @@ public:
 
 	DECLARE_DELEGATE(FOnEquipSelection);
 	FOnEquipSelection OnEquipSelection;	
-	
-	DECLARE_DELEGATE_TwoParams(FOnChangedLookItemInfo, FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot);
+
+	DECLARE_DELEGATE_ThreeParams(FOnChangedLookItemInfo, FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot, FItem* ComparedItemInfo);
 	FOnChangedLookItemInfo OnChangedLookItemInfo;
 
 protected:	
@@ -64,7 +64,9 @@ protected:
 	UPROPERTY(meta=(BindWidget))
 	UWrapBox* InventoryWrapBox;
 	
-	TArray<UInventoryItemSlot*> Items;	
+	TArray<UInventoryItemSlot*> Items;
+
+	FEquipmentSlot* CurrentEquipmentItemSlot;
 
 private:
 	

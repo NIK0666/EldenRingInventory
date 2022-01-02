@@ -128,6 +128,9 @@ struct TESTELDENRING_API FSuperAttack
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText AttackName = FText::FromString("No skill");
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText AttackDescription = FText::GetEmpty();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float FPCost;

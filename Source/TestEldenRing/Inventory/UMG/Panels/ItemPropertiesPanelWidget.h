@@ -9,6 +9,7 @@
 
 #include "ItemPropertiesPanelWidget.generated.h"
 
+class UWidgetSwitcher;
 class UTextBlock;
 class UImage;
 class UCanvasPanel;
@@ -23,17 +24,23 @@ class TESTELDENRING_API UItemPropertiesWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void Update(FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot) const;
+	
+	void Update(FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot, FItem* ComparedItemInfo);
+	void ChangeDetailsView(bool NewIsDetails);
+	void FlipItemInfoView();
 
 protected:
 	void ShowEffectsBlock(const TArray<FItemEffect>& EffectsInfo, const FText& CaptionText) const;
-	void ShowAttackPower(const FAttackPower& AttackPowerInfo) const;
-	void ShowGuardedDamageNegation(const FGuardedDamageNegation& GuardedDamageNegationInfo) const;
-	void ShowAttributeScaling(const FAttributeScaling& AttributeScalingInfo) const;
-	void ShowAttributeRequired(const FAttributeRequired& AttributeRequiredInfo) const;
-	void ShowDamageNegation(const FDamageNegation& DamageNegationInfo) const;
-	void ShowResistance(const FResistance& ResistanceInfo) const;
+	void ShowAttackPower(const FAttackPower* AttackPowerInfo, const FAttackPower* ComparedAttackPower);
+	void ShowGuardedDamageNegation(const FGuardedDamageNegation* GuardedDamageNegationInfo, const FGuardedDamageNegation* ComparedGuardedDamageNegation);
+	void ShowAttributeScaling(const FAttributeScaling* AttributeScalingInfo, const FAttributeScaling* ComparedAttributeScaling);
+	void ShowAttributeRequired(const FAttributeRequired* AttributeRequiredInfo, const FAttributeRequired* ComparedAttributeRequired);
+	void ShowDamageNegation(const FDamageNegation* DamageNegationInfo, const FDamageNegation* ComparedDamageNegation);
+	void ShowResistance(const FResistance* ResistanceInfo, const FResistance* ComparedResistance);
 
+	
+	void SetRowValueColor(UPropertyRowWidget* RowWidget, float Value);
+	
 	// COMMON
 	UPROPERTY(meta=(BindWidget))
 	UCanvasPanel* Common;
@@ -58,6 +65,25 @@ protected:
 
 	UPROPERTY(meta=(BindWidget))
 	UPropertyRowWidget* Common_Row_5;
+	
+	// DETAILED
+	UPROPERTY(meta=(BindWidget))
+	UImage* Details_IconImage;
+
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* Details_CaptionText;
+
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* Details_DescriptionText;
+
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* Details_SpellCaptionText;
+
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* Details_SpellDescriptionText;
+
+	UPROPERTY(meta=(BindWidget))
+	UWidgetSwitcher* ItemInfoSwitcher;	
 	
 
 	// ICON BLOCK
@@ -218,4 +244,17 @@ protected:
 
 	UPROPERTY(meta=(BindWidget))
 	UPropertyRowWidget* Effects_Row_3;
+
+	//COLORS
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	FSlateColor PositiveColor;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	FSlateColor NegativeColor;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	FSlateColor NormalColor;
+	
+private:	
+	bool IsDetails = false;
 };

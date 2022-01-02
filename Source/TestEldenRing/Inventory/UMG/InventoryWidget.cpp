@@ -36,14 +36,14 @@ bool UInventoryWidget::Initialize()
 		InventorySelectionStart();
 	});
 
-	EquipmentPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot)
+	EquipmentPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot, FItem* ComparedItemInfo)
 	{
-		ItemProperties->Update(ItemInfo, InventoryItemSlot);				
+		ItemProperties->Update(ItemInfo, InventoryItemSlot, ComparedItemInfo);
 	});
 	
-	InventoryPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot)
+	InventoryPanel->OnChangedLookItemInfo.BindWeakLambda(this, [this](FItem* ItemInfo, UInventoryItemSlot* InventoryItemSlot, FItem* ComparedItemInfo)
 	{
-		ItemProperties->Update(ItemInfo, InventoryItemSlot);
+		ItemProperties->Update(ItemInfo, InventoryItemSlot, ComparedItemInfo);
 	});
 	
 	return true;
@@ -110,6 +110,10 @@ FReply UInventoryWidget::NativeOnKeyDown(const FGeometry& InGeometry, const FKey
 			UE_LOG(LogTemp, Log, TEXT("UI_SELECT: %s"), *InKeyEvent.GetKey().ToString());
 			InventorySelectionStart();			
 		}
+		else if (CheckIsPressedActionKey(FName("UI_ItemInfo"), InKeyEvent.GetKey()))
+		{
+			ShowItemInfoDetails();
+		}	
 	}
 	
 	return Super::NativeOnKeyDown(InGeometry, InKeyEvent);
@@ -159,6 +163,8 @@ void UInventoryWidget::EquipSelectionCancel()
 	PlayAnimation(InventoryToEquipmentPanelAnim);
 	FTimerHandle Handle;
 	InventoryUIState = EInventoryUIState::Animated;
+	ItemProperties->ChangeDetailsView(false);	
+	EquipmentPanel->ChangedLookItemInfo();
 	
 	GetWorld()->GetTimerManager().SetTimer(Handle, FTimerDelegate::CreateWeakLambda(this, [this]()
 	{
@@ -178,8 +184,8 @@ void UInventoryWidget::InventorySelectionStart()
 	FTimerHandle Handle;
 	InventoryUIState = EInventoryUIState::Animated;
 	
-	//InventoryPanel->Update(EquipmentPanel->GetSelectedSlotName(), EquipmentPanel->GetSelectedSlotType());
 	InventoryPanel->EquipSelectedItem();
+	ItemProperties->ChangeDetailsView(false);
 	
 	GetWorld()->GetTimerManager().SetTimer(Handle, FTimerDelegate::CreateWeakLambda(this, [this]()
 	{
@@ -194,3 +200,9 @@ void UInventoryWidget::SimpleViewChange()
 	SimpleViewPanel->SetVisibility(bIsSimpleView ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 	DetailedViewPanel->SetVisibility(!bIsSimpleView ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 }
+
+void UInventoryWidget::ShowItemInfoDetails()
+{
+	ItemProperties->FlipItemInfoView();
+}
+
