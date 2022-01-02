@@ -8,7 +8,7 @@
 UENUM()
 enum class EEquipLoad : uint8
 {
-	LightLoad = 0	UMETA(DisplayName = "Light Load"),
+	LightLoad = 0		UMETA(DisplayName = "Light Load"),
 	MedLoad				UMETA(DisplayName = "Med. Load"),
 	HeavyLoad			UMETA(DisplayName = "Heavy Load")
 };
@@ -52,32 +52,19 @@ struct TESTELDENRING_API FCharacterStatus
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 HP;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 HP_Max;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 FP;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 FP_Max;
+	int32 Stamina;	
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Stamina;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Stamina_Max;
-	
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 EquipLoadWeight;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	EEquipLoad EquipLoad;
+	float EquipLoad;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Discovery;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 MemorySlots;
+	int32 MemorySlotsCount;
 };

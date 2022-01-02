@@ -4,10 +4,12 @@
 #include "ERPlayerController.h"
 
 #include "TestEldenRing/Inventory/InventoryAC.h"
+#include "TestEldenRing/CharacterStatus/CharacterStatusAC.h"
 
 AERPlayerController::AERPlayerController(const FObjectInitializer &ObjectInitializer)
-{	
+{
 	InventoryAC = ObjectInitializer.CreateDefaultSubobject<UInventoryAC>(this, FName(TEXT("InventoryAC")));
+	CharacterStatusAC = ObjectInitializer.CreateDefaultSubobject<UCharacterStatusAC>(this, FName(TEXT("CharacterStatusAC")));
 }
 
 void AERPlayerController::BeginPlay()
@@ -49,4 +51,9 @@ void AERPlayerController::EndPlay(const EEndPlayReason::Type EndPlayReason)
 UInventoryAC* AERPlayerController::GetInventoryAC() const
 {
 	return InventoryAC;
+}
+
+UCharacterStatusAC* AERPlayerController::GetCharacterStatusAC() const
+{
+	return CharacterStatusAC;
 }

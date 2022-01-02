@@ -20,7 +20,10 @@ class TESTELDENRING_API UInventoryAC : public UActorComponent
 public:
 	UInventoryAC();	
 
-	FEquipmentSlot* GetInventoryItemSlotByEquipmentType(EEquipmentSlot EquipmentSlot);		
+	FEquipmentSlot* GetInventoryItemSlotByEquipmentType(EEquipmentSlot EquipmentSlot);
+
+	UFUNCTION()
+	const TMap<EEquipmentSlot, FEquipmentSlot>& GetEquipments();
 
 	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
 	TArray<UInventoryItemSlot*> GetInventoryItems(const UDataTable* OwnDataTable);

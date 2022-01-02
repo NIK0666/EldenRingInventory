@@ -55,11 +55,22 @@ void UPropertyRowWidget::SetIntValue(const int32& NewValue)
 	SetStringValue(FString::FromInt(NewValue));
 }
 
+void UPropertyRowWidget::SetIntPair(int32 Current, int32 Max)
+{
+	SetStringValue(FString::FromInt(Current) + " / " + FString::FromInt(Max));
+}
+
 void UPropertyRowWidget::SetFloatValue(const float& NewValue)
 {
-	const int32 Decimal = FMath::TruncToInt(NewValue);
-	const int32 Tenth = FMath::RoundToInt(NewValue * 10) - Decimal * 10;
-	SetStringValue(FString::FromInt(Decimal) + "." + FString::FromInt(Tenth));
+	SetStringValue(FloatToString(NewValue));
+}
+
+void UPropertyRowWidget::SetFloatPair(float Current, float Max)
+{
+	const FString& CurrentString = FloatToString(Current);
+	const FString& MaxString = FloatToString(Max);
+
+	SetStringValue(CurrentString + " / " + MaxString);
 }
 
 void UPropertyRowWidget::SetCaption(const FText& NewCaption)
@@ -83,4 +94,12 @@ void UPropertyRowWidget::Clear()
 {
 	HideCaption();
 	HideValue();
+}
+
+FString UPropertyRowWidget::FloatToString(float Value)
+{
+	const int32 Decimal = FMath::TruncToInt(Value);
+	const int32 Tenth = FMath::RoundToInt(Value * 10) - Decimal * 10;
+
+	return FString::FromInt(Decimal) + "." + FString::FromInt(Tenth);
 }

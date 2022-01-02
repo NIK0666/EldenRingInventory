@@ -6,6 +6,8 @@
 #include "ERPlayerController.generated.h"
 
 class UInventoryAC;
+class UCharacterStatusAC;
+
 /**
  * 
  */
@@ -22,11 +24,17 @@ public:
 
 	UFUNCTION()
 	UInventoryAC* GetInventoryAC() const;
+	
+	UFUNCTION()
+	UCharacterStatusAC* GetCharacterStatusAC() const;
 
 protected:
 
 	UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
 	UInventoryAC* InventoryAC = nullptr;
+
+	UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
+	UCharacterStatusAC* CharacterStatusAC = nullptr;
 	
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)	
 	TSubclassOf<UInventoryAC> InventoryACClass;

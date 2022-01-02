@@ -182,6 +182,11 @@ FEquipmentSlot* UInventoryAC::GetInventoryItemSlotByEquipmentType(EEquipmentSlot
 	
 }
 
+const TMap<EEquipmentSlot, FEquipmentSlot>& UInventoryAC::GetEquipments()
+{
+	return Equipment;
+}
+
 TArray<UInventoryItemSlot*> UInventoryAC::GetInventoryItems(const UDataTable* OwnDataTable)
 {
 	TArray<UInventoryItemSlot*> Out;

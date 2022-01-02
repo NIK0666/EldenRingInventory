@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "TestEldenRing/Inventory/Data/InventoryData.h"
 #include "PropertyRowWidget.generated.h"
 
 class USizeBox;
@@ -29,7 +28,13 @@ public:
 	void SetIntValue(const int32& NewValue);
 	
 	UFUNCTION()
+	void SetIntPair(int32 Current, int32 Max);
+
+	UFUNCTION()
 	void SetFloatValue(const float& NewValue);
+	
+	UFUNCTION()
+	void SetFloatPair(float Current, float Max);
 
 	UFUNCTION()
 	void SetCaption(const FText& NewCaption);
@@ -45,11 +50,7 @@ public:
 	void HideCaption();
 	
 	void Clear();
-
-protected:
-
-	
-	
+protected:	
 	UPROPERTY(meta=(BindWidget))
 	USizeBox* RootSizeBox;
 	
@@ -70,6 +71,8 @@ protected:
 
 	UPROPERTY(EditInstanceOnly)
 	float WidthMax = 557.f;
+
+	static FString FloatToString(float Value);
 };
 
 template <typename T>
