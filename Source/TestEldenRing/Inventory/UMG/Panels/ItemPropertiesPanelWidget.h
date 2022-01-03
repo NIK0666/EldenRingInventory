@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "TestEldenRing/CharacterStatus/Data/CharacterStatusData.h"
 
 #include "TestEldenRing/Inventory/Data/InventoryData.h"
 
@@ -34,7 +35,7 @@ protected:
 	void ShowAttackPower(const FAttackPower* AttackPowerInfo, const FAttackPower* ComparedAttackPower);
 	void ShowGuardedDamageNegation(const FGuardedDamageNegation* GuardedDamageNegationInfo, const FGuardedDamageNegation* ComparedGuardedDamageNegation);
 	void ShowAttributeScaling(const FAttributeScaling* AttributeScalingInfo, const FAttributeScaling* ComparedAttributeScaling);
-	void ShowAttributeRequired(const FAttributeRequired* AttributeRequiredInfo, const FAttributeRequired* ComparedAttributeRequired);
+	void ShowAttributeRequired(const FAttributeRequired* AttributeRequiredInfo, const FCharacterStatus* CharacterStatus) const;
 	void ShowDamageNegation(const FDamageNegation* DamageNegationInfo, const FDamageNegation* ComparedDamageNegation);
 	void ShowResistance(const FResistance* ResistanceInfo, const FResistance* ComparedResistance);
 

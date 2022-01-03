@@ -7,6 +7,8 @@
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 #include "Components/WidgetSwitcher.h"
+#include "TestEldenRing/CharacterStatus/CharacterStatusAC.h"
+#include "TestEldenRing/Core/ERPlayerController.h"
 #include "TestEldenRing/Inventory/InventoryItemSlot.h"
 
 #include "TestEldenRing/Inventory/UMG/PropertyRowWidget.h"
@@ -89,6 +91,16 @@ void UItemPropertiesWidget::Update(FItem* ItemInfo, UInventoryItemSlot* Inventor
 			Common_Row_1->SetValueColor(NormalColor);
 			Common_Row_3->SetValueColor(NormalColor);
 
+			const AERPlayerController* PlayerController = Cast<AERPlayerController>(GetOwningPlayer());
+			if (IsValid(PlayerController))
+			{
+				ShowAttributeRequired(&WeaponItem->AttributeRequired, PlayerController->GetCharacterStatusAC()->GetStatus());					
+			}
+			else
+			{
+				ShowAttributeRequired(&WeaponItem->AttributeRequired, nullptr);
+			}
+			
 			if (ComparedWeaponItem)
 			{				
 				SetRowValueColor(Common_Row_4, WeaponItem->SuperAttack.FPCost - ComparedWeaponItem->SuperAttack.FPCost);
@@ -96,9 +108,7 @@ void UItemPropertiesWidget::Update(FItem* ItemInfo, UInventoryItemSlot* Inventor
 
 				ShowAttackPower(&WeaponItem->AttackPower, &ComparedWeaponItem->AttackPower);
 				ShowGuardedDamageNegation(&WeaponItem->GuardedDamageNegation, &ComparedWeaponItem->GuardedDamageNegation);
-				ShowAttributeScaling(&WeaponItem->AttributeScaling, &ComparedWeaponItem->AttributeScaling);
-				ShowAttributeRequired(&WeaponItem->AttributeRequired, &ComparedWeaponItem->AttributeRequired);
-				
+				ShowAttributeScaling(&WeaponItem->AttributeScaling, &ComparedWeaponItem->AttributeScaling);				
 			}
 			else
 			{
@@ -108,7 +118,6 @@ void UItemPropertiesWidget::Update(FItem* ItemInfo, UInventoryItemSlot* Inventor
 				ShowAttackPower(&WeaponItem->AttackPower, nullptr);
 				ShowGuardedDamageNegation(&WeaponItem->GuardedDamageNegation, nullptr);
 				ShowAttributeScaling(&WeaponItem->AttributeScaling, nullptr);
-				ShowAttributeRequired(&WeaponItem->AttributeRequired, nullptr );
 			}
 
 			if (WeaponItem != nullptr)
@@ -373,7 +382,7 @@ void UItemPropertiesWidget::ShowAttributeScaling(const FAttributeScaling* Attrib
 	}	
 }
 
-void UItemPropertiesWidget::ShowAttributeRequired(const FAttributeRequired* AttributeRequiredInfo, const FAttributeRequired* ComparedAttributeRequired)
+void UItemPropertiesWidget::ShowAttributeRequired(const FAttributeRequired* AttributeRequiredInfo, const FCharacterStatus* CharacterStatus) const
 {
 	AttributeScaling->SetVisibility(ESlateVisibility::Visible);
 	
@@ -383,13 +392,13 @@ void UItemPropertiesWidget::ShowAttributeRequired(const FAttributeRequired* Attr
 	AttributeRequired_Fai_Row->SetIntValue(AttributeRequiredInfo->Fai);
 	AttributeRequired_Arc_Row->SetIntValue(AttributeRequiredInfo->Arc);
 
-	if (ComparedAttributeRequired)
+	if (CharacterStatus)
 	{
-		SetRowValueColor(AttributeRequired_Str_Row, ComparedAttributeRequired->Str - AttributeRequiredInfo->Str);
-		SetRowValueColor(AttributeRequired_Dex_Row, ComparedAttributeRequired->Dex - AttributeRequiredInfo->Dex);
-		SetRowValueColor(AttributeRequired_Int_Row, ComparedAttributeRequired->Int - AttributeRequiredInfo->Int);
-		SetRowValueColor(AttributeRequired_Fai_Row, ComparedAttributeRequired->Fai - AttributeRequiredInfo->Fai);
-		SetRowValueColor(AttributeRequired_Arc_Row, ComparedAttributeRequired->Arc - AttributeRequiredInfo->Arc);
+		AttributeRequired_Str_Row->SetValueColor(CharacterStatus->Strength >= AttributeRequiredInfo->Str ? NormalColor : NegativeColor);
+		AttributeRequired_Dex_Row->SetValueColor(CharacterStatus->Dexterity >= AttributeRequiredInfo->Dex ? NormalColor : NegativeColor);
+		AttributeRequired_Int_Row->SetValueColor(CharacterStatus->Intelligence >= AttributeRequiredInfo->Int ? NormalColor : NegativeColor);
+		AttributeRequired_Fai_Row->SetValueColor(CharacterStatus->Faith >= AttributeRequiredInfo->Fai ? NormalColor : NegativeColor);
+		AttributeRequired_Arc_Row->SetValueColor(CharacterStatus->Arcane >= AttributeRequiredInfo->Arc ? NormalColor : NegativeColor);
 	}
 	else
 	{		

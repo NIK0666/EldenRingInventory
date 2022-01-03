@@ -27,7 +27,8 @@ void UEquipmentPanelWidget::NativeConstruct()
 
 				if (CurrentSelectedSlotWidget == ItemEquipmentSlotWidget)
 				{
-					ItemNameText->SetText(ItemEquipmentSlotWidget->GetItemName());
+					ItemNameText->SetText(ItemEquipmentSlotWidget->GetItemName());					
+					ChangedLookItemInfo();
 				}
 			});
 	}
