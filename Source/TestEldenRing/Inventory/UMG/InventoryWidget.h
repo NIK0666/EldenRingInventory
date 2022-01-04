@@ -9,6 +9,7 @@
 
 #include "InventoryWidget.generated.h"
 
+class UControlButtonWidget;
 class UItemPropertiesWidget;
 class UCanvasPanel;
 class UInventoryPanelWidget;
@@ -54,6 +55,28 @@ protected:
 	UPROPERTY(meta=(BindWidgetAnim), Transient)
 	UWidgetAnimation* InventoryToEquipmentPanelAnim;
 
+	//CONTROL PANEL
+	UPROPERTY(meta=(BindWidget))
+	UControlButtonWidget* EquipSelectControlButton;
+	
+	UPROPERTY(meta=(BindWidget))
+	UControlButtonWidget* InventorySelectControlButton;
+	
+	UPROPERTY(meta=(BindWidget))
+	UControlButtonWidget* BackControlButton;
+	
+	UPROPERTY(meta=(BindWidget))
+	UControlButtonWidget* RemoveControlButton;
+	
+	UPROPERTY(meta=(BindWidget))
+	UControlButtonWidget* SwitchDisplayControlButton;
+	
+	UPROPERTY(meta=(BindWidget))
+	UControlButtonWidget* ViewModeControlButton;
+	
+	UPROPERTY(meta=(BindWidget))
+	UControlButtonWidget* HelpControlButton;
+
 private:
 	UFUNCTION()
 	static bool CheckIsPressedActionKey(const FName& ActionName, const FKey& PressedKey);
@@ -64,6 +87,7 @@ private:
 	void InventorySelectionStart();
 	void SimpleViewChange();
 	void ShowItemInfoDetails();
+	void SetInventoryUIState(EInventoryUIState NewInventoryUIState);
 
 	EInventoryUIState InventoryUIState = EInventoryUIState::Equipment;
 

@@ -3,8 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
-
 #include "BaseSlotWidget.h"
 
 #include "ItemInventorySlotWidget.generated.h"

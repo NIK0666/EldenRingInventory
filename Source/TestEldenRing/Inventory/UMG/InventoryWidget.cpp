@@ -3,6 +3,7 @@
 
 #include "InventoryWidget.h"
 #include "Components/CanvasPanel.h"
+#include "Elements/ControlButtonWidget.h"
 #include "GameFramework/InputSettings.h"
 
 #include "Panels/ItemPropertiesPanelWidget.h"
@@ -147,13 +148,13 @@ void UInventoryWidget::EquipSelectionStart()
 {
 	PlayAnimation(EquipmentToInventoryPanelAnim);
 	FTimerHandle Handle;
-	InventoryUIState = EInventoryUIState::Animated;
+	SetInventoryUIState(EInventoryUIState::Animated);
 	
 	InventoryPanel->Update(EquipmentPanel->GetSelectedSlotName(), EquipmentPanel->GetSelectedSlotType());
 	
 	GetWorld()->GetTimerManager().SetTimer(Handle, FTimerDelegate::CreateWeakLambda(this, [this]()
 	{
-		InventoryUIState = EInventoryUIState::SelectItem;
+		SetInventoryUIState(EInventoryUIState::SelectItem);		
 	}), EquipmentToInventoryPanelAnim->GetEndTime(), false);
 
 }
@@ -162,14 +163,15 @@ void UInventoryWidget::EquipSelectionCancel()
 {
 	PlayAnimation(InventoryToEquipmentPanelAnim);
 	FTimerHandle Handle;
-	InventoryUIState = EInventoryUIState::Animated;
+	SetInventoryUIState(EInventoryUIState::Animated);
 	ItemProperties->ChangeDetailsView(false);	
 	EquipmentPanel->ChangedLookItemInfo();
 	
 	GetWorld()->GetTimerManager().SetTimer(Handle, FTimerDelegate::CreateWeakLambda(this, [this]()
 	{
 		InventoryPanel->EndHidePanel();
-		InventoryUIState = EInventoryUIState::Equipment;
+		SetInventoryUIState(EInventoryUIState::Equipment);
+		
 	}), EquipmentToInventoryPanelAnim->GetEndTime(), false);
 }
 
@@ -182,7 +184,7 @@ void UInventoryWidget::InventorySelectionStart()
 	
 	PlayAnimation(InventoryToEquipmentPanelAnim);
 	FTimerHandle Handle;
-	InventoryUIState = EInventoryUIState::Animated;
+	SetInventoryUIState(EInventoryUIState::Animated);
 	
 	InventoryPanel->EquipSelectedItem();
 	ItemProperties->ChangeDetailsView(false);
@@ -190,7 +192,7 @@ void UInventoryWidget::InventorySelectionStart()
 	GetWorld()->GetTimerManager().SetTimer(Handle, FTimerDelegate::CreateWeakLambda(this, [this]()
 	{
 		InventoryPanel->EndHidePanel();
-		InventoryUIState = EInventoryUIState::Equipment;
+		SetInventoryUIState(EInventoryUIState::Equipment);
 	}), EquipmentToInventoryPanelAnim->GetEndTime(), false);
 }
 
@@ -199,10 +201,34 @@ void UInventoryWidget::SimpleViewChange()
 	bIsSimpleView = !bIsSimpleView;
 	SimpleViewPanel->SetVisibility(bIsSimpleView ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 	DetailedViewPanel->SetVisibility(!bIsSimpleView ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+
+	ViewModeControlButton->SetDescription(FText::FromString(bIsSimpleView ? "Detailed View" : "Simple View"));
+	if (InventoryUIState == EInventoryUIState::SelectItem)
+	{
+		SwitchDisplayControlButton->SetVisibility(bIsSimpleView ? ESlateVisibility::Collapsed : ESlateVisibility::Visible);
+	}
 }
 
 void UInventoryWidget::ShowItemInfoDetails()
 {
-	ItemProperties->FlipItemInfoView();
+	if (!bIsSimpleView)
+	{
+		ItemProperties->FlipItemInfoView();
+	}	
+}
+
+void UInventoryWidget::SetInventoryUIState(EInventoryUIState NewInventoryUIState)
+{
+	InventoryUIState = NewInventoryUIState;
+
+	if (InventoryUIState == EInventoryUIState::Animated)
+	{
+		return;
+	}
+	const bool IsSelectItem = InventoryUIState == EInventoryUIState::SelectItem;
+	EquipSelectControlButton->SetVisibility(IsSelectItem ? ESlateVisibility::Collapsed : ESlateVisibility::Visible);
+	InventorySelectControlButton->SetVisibility(IsSelectItem ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+	RemoveControlButton->SetVisibility(IsSelectItem ? ESlateVisibility::Collapsed : ESlateVisibility::Visible);
+	SwitchDisplayControlButton->SetVisibility(IsSelectItem && !bIsSimpleView ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 }
 
