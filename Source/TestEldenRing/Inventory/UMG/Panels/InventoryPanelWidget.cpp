@@ -32,7 +32,7 @@ void UInventoryPanelWidget::NativeConstruct()
 	}
 }
 
-void UInventoryPanelWidget::Update(const FText& SlotNameText, EEquipmentSlot EquipmentSlot)
+void UInventoryPanelWidget::Update(const FText& SlotNameText, EEquipmentSlot EquipmentSlot, UInventoryItemSlot* CurrentInventoryItemSlot)
 {
 	InventorySlotTypeText->SetText(SlotNameText);
 
@@ -56,6 +56,10 @@ void UInventoryPanelWidget::Update(const FText& SlotNameText, EEquipmentSlot Equ
 		if (i < Items.Num())
 		{
 			ItemWidget->Update(Items[i]);
+			if (CurrentInventoryItemSlot != nullptr && CurrentInventoryItemSlot == Items[i])
+			{
+				ItemWidget->SetSelected();
+			}
 		}
 		else
 		{
@@ -63,9 +67,8 @@ void UInventoryPanelWidget::Update(const FText& SlotNameText, EEquipmentSlot Equ
 		}		
 	}
 
-	if (Items.Num() > 0)
+	if (Items.Num() > 0 && CurrentInventoryItemSlot == nullptr)
 	{
-		//TODO Ищем выбранный слот и его выделяем.
 		Cast<UItemInventorySlotWidget>(InventoryWrapBox->GetChildAt(0))->SetSelected();
 	}
 	

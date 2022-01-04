@@ -8,6 +8,7 @@
 
 #include "Panels/ItemPropertiesPanelWidget.h"
 #include "Panels/InventoryPanelWidget.h"
+#include "Slots/ItemEquipmentSlotWidget.h"
 #include "Slots/ItemInventorySlotWidget.h"
 
 bool UInventoryWidget::Initialize()
@@ -149,8 +150,7 @@ void UInventoryWidget::EquipSelectionStart()
 	PlayAnimation(EquipmentToInventoryPanelAnim);
 	FTimerHandle Handle;
 	SetInventoryUIState(EInventoryUIState::Animated);
-	
-	InventoryPanel->Update(EquipmentPanel->GetSelectedSlotName(), EquipmentPanel->GetSelectedSlotType());
+	InventoryPanel->Update(EquipmentPanel->GetSelectedSlotWidget()->GetSlotName(), EquipmentPanel->GetSelectedSlotWidget()->EquipmentSlotType, EquipmentPanel->GetSelectedSlotWidget()->GetInventoryItemSlot());
 	
 	GetWorld()->GetTimerManager().SetTimer(Handle, FTimerDelegate::CreateWeakLambda(this, [this]()
 	{

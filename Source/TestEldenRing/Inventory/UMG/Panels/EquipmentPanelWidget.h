@@ -34,10 +34,7 @@ public:
 	void EquipRemove() const;
 
 	UFUNCTION()
-	FText GetSelectedSlotName() const;
-
-	UFUNCTION()
-	EEquipmentSlot GetSelectedSlotType() const;
+	UItemEquipmentSlotWidget* GetSelectedSlotWidget() const;
 
 	UFUNCTION()
 	void ChangedLookItemInfo() const;

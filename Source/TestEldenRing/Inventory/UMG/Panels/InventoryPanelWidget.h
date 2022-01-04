@@ -25,7 +25,7 @@ public:
 	virtual void NativeConstruct() override;
 	
 	UFUNCTION()
-	void Update(const FText& SlotNameText, EEquipmentSlot EquipmentSlot);
+	void Update(const FText& SlotNameText, EEquipmentSlot EquipmentSlot, UInventoryItemSlot* CurrentInventoryItemSlot);
 
 	UFUNCTION()
 	void SetSelectedInventorySlot(UBaseSlotWidget* NewSlotWidget);
