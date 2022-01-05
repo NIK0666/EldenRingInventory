@@ -1,4 +1,4 @@
-# EldenRingInventory
+# Elden Ring Inventory UI
 Implementation of the inventory system from the Elden Ring demo. 
 
 ![CodeTree](https://user-images.githubusercontent.com/11288703/148190142-ac4badf9-b9bc-4467-9c64-e00d7261da97.png)
