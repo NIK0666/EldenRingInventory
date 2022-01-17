@@ -45,7 +45,7 @@ void UBaseSlotWidget::Update(UInventoryItemSlot* InventoryItemSlot)
 	if (IsValid(InventoryItemSlot))
 	{
 		ItemImage->SetVisibility(ESlateVisibility::Visible);
-		ItemImage->SetBrushFromTexture(InventoryItemSlot->GetItemInfo()->Icon);
+		ItemImage->SetBrushFromTexture(InventoryItemSlot->GetItemInfo()->Icon.Get());
 	}
 	else
 	{

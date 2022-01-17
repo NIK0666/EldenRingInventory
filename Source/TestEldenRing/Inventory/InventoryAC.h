@@ -57,19 +57,26 @@ public:
 
 	/**
 	 * @brief Экипирует или убирает экипировку предмета
-	 * @param InventoryItemSlot Объект слота из инвентаря. Если nullptr то снимается экипировка.
+	 * @param InventoryItemSlot Объект слота из инвентаря.
 	 */
 	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
 	bool SetEquipItem(UInventoryItemSlot* InventoryItemSlot);
 	
 	/**
-	 * @brief Экипирует или убирает экипировку предмета
-	 * @param InventoryItemSlot Объект слота из инвентаря. Если nullptr то снимается экипировка.
+	 * @brief Экипирует предмет
+	 * @param InventoryItemSlot Объект слота из инвентаря.
 	 * @param EquipmentSlot Тип слота, куда экипировать
 	 */
 	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
 	void SetEquipItemToSlot(UInventoryItemSlot* InventoryItemSlot, EEquipmentSlot EquipmentSlot);
 
+	/**
+	 * @brief Убирает из экипировки предмет в слоте.
+	 * @param EquipmentSlot Тип слота
+	 */
+	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
+	void ClearEquipSlot(EEquipmentSlot EquipmentSlot);
+	
 	FItem* GetEmptyEquipmentInfo(EEquipmentSlot EquipmentSlot);
 
 	DECLARE_MULTICAST_DELEGATE_FourParams(FAddedItem, const FDataTableRowHandle& ItemRow, const FItem& Item,
@@ -85,9 +92,6 @@ public:
 	DECLARE_MULTICAST_DELEGATE_ThreeParams(FEquipItemChanged, EEquipmentSlot EquipmentSlot,	UInventoryItemSlot* FromInventoryItemSlot, UInventoryItemSlot* ToInventoryItemSlot);
 	
 	FEquipItemChanged EquipItemChanged;
-
-	UFUNCTION(BlueprintCallable, meta=(Category="Inventory"))
-	void ClearEquipSlot(EEquipmentSlot EquipmentSlot);
 
 protected:
 	virtual void BeginPlay() override;	

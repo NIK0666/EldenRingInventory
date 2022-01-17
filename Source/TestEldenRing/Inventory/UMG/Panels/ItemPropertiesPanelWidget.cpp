@@ -45,10 +45,10 @@ void UItemPropertiesWidget::Update(FItem* ItemInfo, UInventoryItemSlot* Inventor
 	if (ItemInfo->Icon != nullptr)
 	{
 		IconBlock_IconImage->SetVisibility(ESlateVisibility::Visible);
-		IconBlock_IconImage->SetBrushFromTexture(ItemInfo->Icon);
+		IconBlock_IconImage->SetBrushFromTexture(ItemInfo->Icon.Get());
 
 		Details_IconImage->SetVisibility(ESlateVisibility::Visible);
-		Details_IconImage->SetBrushFromTexture(ItemInfo->Icon);
+		Details_IconImage->SetBrushFromTexture(ItemInfo->Icon.Get());
 	}
 	else
 	{

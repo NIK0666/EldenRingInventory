@@ -14,9 +14,6 @@ AERPlayerController::AERPlayerController(const FObjectInitializer &ObjectInitial
 
 void AERPlayerController::BeginPlay()
 {
-	Super::BeginPlay();
-
-	
 	InventoryAC->RemovedItemEvent.AddWeakLambda(this,
 		[this](const FDataTableRowHandle& ItemRow, const FItem& Item, int32 RemovedCount, int32 TotalCount)
 	{
@@ -25,8 +22,12 @@ void AERPlayerController::BeginPlay()
 
 	InventoryAC->EquipItemChanged.AddWeakLambda(this,
 		[this](EEquipmentSlot EquipmentSlot, UInventoryItemSlot* FromInventoryItemSlot, UInventoryItemSlot* ToInventoryItemSlot)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Equip item changed!"));
+	{			
+		UE_LOG(LogTemp, Warning, TEXT("Equip [%s] changed FROM %s TO %s"), 
+		*UEnum::GetValueAsString(EquipmentSlot),
+		*(FromInventoryItemSlot == nullptr ? FString("<EMPTY>") : FromInventoryItemSlot->ItemRow.RowName.ToString()),
+		*(ToInventoryItemSlot == nullptr ? FString("<EMPTY>") : *ToInventoryItemSlot->ItemRow.RowName.ToString())
+		);
 	});
 
 	InventoryAC->AddedItemEvent.AddWeakLambda(this,
@@ -41,6 +42,7 @@ void AERPlayerController::BeginPlay()
 		UE_LOG(LogTemp, Error, TEXT("Moved to Chest: %s; Count: %d"), *Item.ItemName.ToString(), Count);
 	});
 	
+	Super::BeginPlay();
 }
 
 void AERPlayerController::EndPlay(const EEndPlayReason::Type EndPlayReason)

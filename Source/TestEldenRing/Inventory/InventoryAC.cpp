@@ -68,11 +68,17 @@ UInventoryItemSlot* UInventoryAC::AddItem(const FDataTableRowHandle& ItemRow, in
 		return ItemSlot;
 	}
 
-	UInventoryItemSlot* ItemSlot = NewObject<UInventoryItemSlot>();
-	ItemSlot->ItemRow = ItemRow;
-	ItemSlot->Count = Count;	
-	Inventory.Add(ItemSlot);
-	AddedItemEvent.Broadcast(ItemRow, *Item, Count, Count);
+	UInventoryItemSlot* ItemSlot = nullptr;
+	
+	for (int32 i = 0; i < Count; i++)
+	{
+		ItemSlot = NewObject<UInventoryItemSlot>();
+		ItemSlot->ItemRow = ItemRow;
+		ItemSlot->Count = 1;
+		Inventory.Add(ItemSlot);
+		AddedItemEvent.Broadcast(ItemRow, *Item, 1, 1);
+	}
+	
 	return ItemSlot;
 	
 }
@@ -215,7 +221,6 @@ void UInventoryAC::SetEquipItemToSlot(UInventoryItemSlot* InventoryItemSlot, EEq
 	}
 	if (InventoryItemSlot->EquipmentSlotType != EEquipmentSlot::None)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("UInventoryAC::SetEquipItemToSlot - EquipmentSlotType is not NONE!"));
 		ClearEquipSlot(InventoryItemSlot->EquipmentSlotType);
 	}
 
@@ -252,17 +257,19 @@ void UInventoryAC::ClearEquipSlot(EEquipmentSlot EquipmentSlot)
 		return;
 	}
 
-	if (Equipment[EquipmentSlot].InventoryItemSlot != nullptr)
+	if (Equipment[EquipmentSlot].InventoryItemSlot == nullptr)
 	{
-		UInventoryItemSlot* PrevItemSlot = Equipment[EquipmentSlot].InventoryItemSlot;
-		PrevItemSlot->EquipmentSlotType = EEquipmentSlot::None;
-		Equipment[EquipmentSlot].InventoryItemSlot = nullptr;
+		return;
+	}
+	
+	UInventoryItemSlot* PrevItemSlot = Equipment[EquipmentSlot].InventoryItemSlot;
+	PrevItemSlot->EquipmentSlotType = EEquipmentSlot::None;
+	Equipment[EquipmentSlot].InventoryItemSlot = nullptr;
 		
-		if (EquipItemChanged.IsBound())
-		{
-			EquipItemChanged.Broadcast(EquipmentSlot, PrevItemSlot, nullptr);
-		}
-	}	
+	if (EquipItemChanged.IsBound())
+	{
+		EquipItemChanged.Broadcast(EquipmentSlot, PrevItemSlot, nullptr);
+	}
 }
 
 UInventoryItemSlot* UInventoryAC::FindInventoryItemSlot(const FDataTableRowHandle& ItemRow)

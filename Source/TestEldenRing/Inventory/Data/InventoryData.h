@@ -253,7 +253,7 @@ struct TESTELDENRING_API FItem: public FTableRowBase
 	float Weight;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UTexture2D* Icon;
+	TSoftObjectPtr<UTexture2D> Icon;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText DetailsTitle;
